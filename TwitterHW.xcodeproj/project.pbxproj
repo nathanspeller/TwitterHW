@@ -19,6 +19,8 @@
 		7E970C9118E4B44000517A1F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E970C7918E4B44000517A1F /* UIKit.framework */; };
 		7E970C9918E4B44000517A1F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E970C9718E4B44000517A1F /* InfoPlist.strings */; };
 		7E970C9B18E4B44000517A1F /* TwitterHWTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E970C9A18E4B44000517A1F /* TwitterHWTests.m */; };
+		7E970CA718E4B4E500517A1F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E970CA518E4B4E500517A1F /* LoginViewController.m */; };
+		7E970CA818E4B4E500517A1F /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E970CA618E4B4E500517A1F /* LoginViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,9 @@
 		7E970C9618E4B44000517A1F /* TwitterHWTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TwitterHWTests-Info.plist"; sourceTree = "<group>"; };
 		7E970C9818E4B44000517A1F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E970C9A18E4B44000517A1F /* TwitterHWTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwitterHWTests.m; sourceTree = "<group>"; };
+		7E970CA418E4B4E500517A1F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		7E970CA518E4B4E500517A1F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		7E970CA618E4B4E500517A1F /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +116,9 @@
 				7E970C8518E4B44000517A1F /* AppDelegate.m */,
 				7E970C8718E4B44000517A1F /* Images.xcassets */,
 				7E970C7C18E4B44000517A1F /* Supporting Files */,
+				7E970CA418E4B4E500517A1F /* LoginViewController.h */,
+				7E970CA518E4B4E500517A1F /* LoginViewController.m */,
+				7E970CA618E4B4E500517A1F /* LoginViewController.xib */,
 			);
 			path = TwitterHW;
 			sourceTree = "<group>";
@@ -221,6 +229,7 @@
 			files = (
 				7E970C8018E4B44000517A1F /* InfoPlist.strings in Resources */,
 				7E970C8818E4B44000517A1F /* Images.xcassets in Resources */,
+				7E970CA818E4B4E500517A1F /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +250,7 @@
 			files = (
 				7E970C8618E4B44000517A1F /* AppDelegate.m in Sources */,
 				7E970C8218E4B44000517A1F /* main.m in Sources */,
+				7E970CA718E4B4E500517A1F /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
