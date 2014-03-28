@@ -86,6 +86,14 @@
                 TwitterClient *client = [TwitterClient instance];
                 [client fetchAccessTokenWithPath:@"/oauth/access_token" method:@"POST" requestToken:[BDBOAuthToken tokenWithQueryString:url.query ] success:^(BDBOAuthToken *accessToken) {
                     NSLog(@"access token");
+                    
+                    [client homeTimeLineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                        NSLog(@"SUCCESS %@", responseObject);
+                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                        NSLog(@"FAIL");
+                    }];
+                    
+                    [client.requestSerializer saveAccessToken:accessToken];
                 } failure:^(NSError *error) {
                     NSLog(@"failed to get access token");
                 }];

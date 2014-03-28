@@ -23,7 +23,7 @@
 }
 
 - (void)login {
-//    [self.requestSerializer removeAccessToken];
+    [self.requestSerializer removeAccessToken];
     [self fetchRequestTokenWithPath:@"oauth/request_token" method:@"POST" callbackURL:[NSURL URLWithString:@"ncstwitter://oauth"] scope:nil success:^(BDBOAuthToken *requestToken) {
         NSLog(@"Got the Request Token");
         NSString *authURL = [NSString stringWithFormat:@"https://api.twitter.com/oauth/authorize?oauth_token=%@", requestToken.token];
@@ -31,6 +31,11 @@
     } failure:^(NSError *error) {
         NSLog(@"Failure %@", error.description);
     }];
+}
+
+- (AFHTTPRequestOperation *)homeTimeLineWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                                            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;{
+    return [self GET:@"1.1/statuses/home_timeline.json" parameters:nil success:success failure:failure];
 }
 
 @end
