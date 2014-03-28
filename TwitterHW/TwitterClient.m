@@ -26,7 +26,7 @@
 //    [self.requestSerializer removeAccessToken];
     [self fetchRequestTokenWithPath:@"oauth/request_token" method:@"POST" callbackURL:[NSURL URLWithString:@"ncstwitter://oauth"] scope:nil success:^(BDBOAuthToken *requestToken) {
         NSLog(@"Got the Request Token");
-        NSString *authURL = [NSString stringWithFormat:@"https://apitwitter.com/oauth/authorize?oauth_token=%@", requestToken.token];
+        NSString *authURL = [NSString stringWithFormat:@"https://api.twitter.com/oauth/authorize?oauth_token=%@", requestToken.token];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:authURL]];
     } failure:^(NSError *error) {
         NSLog(@"Failure %@", error.description);

@@ -8,6 +8,29 @@
 
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "TwitterClient.h"
+
+@implementation NSURL (dictionaryFromQueryString)
+
+- (NSDictionary *)dictionaryFromQueryString
+{
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    
+    NSArray *pairs = [[self query] componentsSeparatedByString:@"&"];
+    
+    for(NSString *pair in pairs) {
+        NSArray *elements = [pair componentsSeparatedByString:@"="];
+        
+        NSString *key = [[elements objectAtIndex:0] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString *val = [[elements objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        [dictionary setObject:val forKey:key];
+    }
+    
+    return dictionary;
+}
+
+@end
 
 @implementation AppDelegate
 
@@ -47,6 +70,30 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    if ([url.scheme isEqualToString:@"ncstwitter"])
+    {
+        if ([url.host isEqualToString:@"oauth"])
+        {
+            NSDictionary *parameters = [url dictionaryFromQueryString];
+            if (parameters[@"oauth_token"] && parameters[@"oauth_verifier"]) {
+                TwitterClient *client = [TwitterClient instance];
+                [client fetchAccessTokenWithPath:@"/oauth/access_token" method:@"POST" requestToken:[BDBOAuthToken tokenWithQueryString:url.query ] success:^(BDBOAuthToken *accessToken) {
+                    NSLog(@"access token");
+                } failure:^(NSError *error) {
+                    NSLog(@"failed to get access token");
+                }];
+            }
+        }
+        return YES;
+    }
+    return NO;
 }
 
 @end
