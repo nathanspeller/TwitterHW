@@ -7,9 +7,10 @@
 //
 
 #import "LoginViewController.h"
+#import "TwitterClient.h"
 
 @interface LoginViewController ()
-@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
+- (IBAction)onLoginButton:(id)sender;
 @end
 
 @implementation LoginViewController
@@ -26,12 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.loginBtn addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
     // Do any additional setup after loading the view from its nib.
-}
-
-- (void)login:(id)sender{
-    NSLog(@"login");
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,4 +36,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)onLoginButton:(id)sender {
+    [[TwitterClient instance] login];
+}
 @end
