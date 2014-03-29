@@ -7,8 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "LoginViewController.h"
 #import "TwitterClient.h"
+#import "User.h"
 
 @implementation NSURL (dictionaryFromQueryString)
 
@@ -39,11 +39,31 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    LoginViewController *loginVC = [[LoginViewController alloc] init];
-    self.window.rootViewController = loginVC;
+    [self setRootViewController];
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+
+- (void)setRootViewController {
+    
+    if (!self.loginVC){
+        self.loginVC = [[LoginViewController alloc] init];
+    }
+    if (!self.timelineVC){
+        self.timelineVC = [[TimelineViewController alloc] init];
+    }
+    
+    if ([User currentUser]) {
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.timelineVC];
+        self.window.rootViewController = navigationController;
+    } else {
+        self.window.rootViewController = self.loginVC;
+    }
+    
+    NSLog(@"USER LOGGED IN IS %@", [User currentUser].name);
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -86,14 +106,16 @@
                 TwitterClient *client = [TwitterClient instance];
                 [client fetchAccessTokenWithPath:@"/oauth/access_token" method:@"POST" requestToken:[BDBOAuthToken tokenWithQueryString:url.query ] success:^(BDBOAuthToken *accessToken) {
                     NSLog(@"access token");
+                    [client.requestSerializer saveAccessToken:accessToken];
                     
-                    [client homeTimeLineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-                        NSLog(@"SUCCESS %@", responseObject);
+                    [client verifyCredentialsWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                        // set the current user
+                        User *user = [[User alloc] initWithDictionary:responseObject];
+                        [User setCurrentUser:user];
                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                         NSLog(@"FAIL");
                     }];
                     
-                    [client.requestSerializer saveAccessToken:accessToken];
                 } failure:^(NSError *error) {
                     NSLog(@"failed to get access token");
                 }];
