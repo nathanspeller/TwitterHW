@@ -10,6 +10,9 @@
 
 @interface User : NSObject
 
+extern NSString *const UserDidLogin;
+extern NSString *const UserDidLogout;
+
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) NSString *screenName;

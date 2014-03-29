@@ -18,6 +18,8 @@ static User *currentUser = nil;
 
 + (void)setCurrentUser:(User *)user{
     currentUser = user;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"UserDidLogin" object:nil];
+    NSLog(@"setCurrentUser called");
 }
 
 - (User *)initWithDictionary:(NSDictionary *)dict{

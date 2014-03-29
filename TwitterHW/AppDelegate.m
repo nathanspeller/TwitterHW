@@ -40,6 +40,7 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self setRootViewController];
+    [self subscribeToUserNotifications];
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -62,6 +63,10 @@
     }
     
     NSLog(@"USER LOGGED IN IS %@", [User currentUser].name);
+}
+
+- (void)subscribeToUserNotifications{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setRootViewController) name:@"UserDidLogin" object:nil];
 }
 
 
