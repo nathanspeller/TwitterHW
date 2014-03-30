@@ -13,19 +13,27 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="77"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOi-LC-kez">
-                        <rect key="frame" x="50" y="11" width="165" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOi-LC-kez">
+                        <rect key="frame" x="50" y="7" width="165" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tweet Content" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="3ge-gI-zLP">
-                        <rect key="frame" x="50" y="36" width="250" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet Content" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="3ge-gI-zLP">
+                        <rect key="frame" x="50" y="28" width="250" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="LOi-LC-kez" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="3H9-64-v2s"/>
+                    <constraint firstAttribute="trailing" secondItem="LOi-LC-kez" secondAttribute="trailing" constant="105" id="IND-uN-Adf"/>
+                    <constraint firstAttribute="trailing" secondItem="3ge-gI-zLP" secondAttribute="trailing" constant="20" id="PKO-Nb-I2g"/>
+                    <constraint firstItem="LOi-LC-kez" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="50" id="lMh-Fd-SXb"/>
+                    <constraint firstItem="3ge-gI-zLP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="50" id="lUD-cM-9vt"/>
+                    <constraint firstItem="3ge-gI-zLP" firstAttribute="top" secondItem="LOi-LC-kez" secondAttribute="bottom" id="yng-N8-2x1"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="content" destination="3ge-gI-zLP" id="lYa-S6-45m"/>

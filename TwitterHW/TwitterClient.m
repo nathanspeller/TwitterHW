@@ -43,4 +43,9 @@
     return [self GET:@"1.1/statuses/home_timeline.json" parameters:nil success:success failure:failure];
 }
 
+- (AFHTTPRequestOperation *)tweetStatus:(NSString *)tweet success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                                            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;{
+    return [self POST:@"1.1/statuses/update.json" parameters:@{@"status":tweet} success:success failure:failure];
+}
+
 @end
