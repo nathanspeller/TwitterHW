@@ -45,19 +45,25 @@
     [self.tableView registerNib:tweetCellNib forCellReuseIdentifier:@"TweetCell"];
     
     [self fetchData];
-    
+}
+
+- (void)setupNavigationBar{
     // pull-to-refresh
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:refreshControl];
-}
-
-- (void)setupNavigationBar{
-    UIBarButtonItem *composeTweetButton = [[UIBarButtonItem alloc] initWithTitle:@"Compose" style:UIBarButtonItemStylePlain target:self action:@selector(onComposeTweetButton:)];
+    
+    UIBarButtonItem *composeTweetButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"composing.png"] style:UIBarButtonItemStylePlain target:self action:@selector(onComposeTweetButton:)];
     self.navigationItem.rightBarButtonItem = composeTweetButton;
     
     UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(onLogoutButton:)];
     self.navigationItem.leftBarButtonItem = logoutButton;
+    
+    // twitter logo
+    UIImage *twitterImage = [UIImage imageNamed:@"twitter_bird.png"];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:twitterImage];
+    
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.184 green:0.761 blue:0.937 alpha:1.000];
 }
 
 - (void)fetchData{

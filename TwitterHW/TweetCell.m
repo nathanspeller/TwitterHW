@@ -59,6 +59,10 @@
     } else { // days
         self.timestamp.text = [NSString stringWithFormat:@"%dd", secondsAgo/(60*60*24)];
     }
+    
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = [UIColor colorWithRed:0.955 green:0.95 blue:0.95 alpha:1.0];
+    [self setSelectedBackgroundView:bgColorView];
 }
 
 @end
