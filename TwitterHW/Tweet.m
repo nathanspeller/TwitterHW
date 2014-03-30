@@ -10,8 +10,18 @@
 
 @implementation Tweet
 - (Tweet *)initWithDictionary:(NSDictionary *)dict{
-    self.username = dict[@"user"][@"name"];
-    self.content = dict[@"text"];
+    self = [super init];
+    if (self) {
+        self.name = dict[@"user"][@"name"];
+        self.username = dict[@"user"][@"screen_name"];
+        self.content = dict[@"text"];
+        self.timestamp = dict[@"created_at"];
+        self.userImage = [NSURL URLWithString:dict[@"user"][@"profile_image_url"]];
+        self.favorited = [dict[@"favorited"] intValue];
+        self.retweeted = [dict[@"retweeted"] intValue];
+        self.retweetCount = [dict[@"retweet_count"] intValue];
+        self.favoriteCount = [dict[@"favorite_count"] intValue];
+    }
     return self;
 }
 @end

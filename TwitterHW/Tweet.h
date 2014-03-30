@@ -9,8 +9,16 @@
 #import <Foundation/Foundation.h>
 
 @interface Tweet : NSObject
+@property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *content;
+@property (nonatomic, strong) NSString *timestamp;
+@property (nonatomic, strong) NSURL    *userImage;
+@property (nonatomic, strong) NSString *tweetId;
+@property (nonatomic,assign)  NSUInteger favorited;
+@property (nonatomic,assign)  NSUInteger retweeted;
+@property (nonatomic,assign)  NSUInteger favoriteCount;
+@property (nonatomic,assign)  NSUInteger retweetCount;
 
 - (Tweet *)initWithDictionary:(NSDictionary *)dict;
 @end

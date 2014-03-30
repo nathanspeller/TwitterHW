@@ -11,8 +11,11 @@
 
 @interface TweetCell : UITableViewCell
 @property (nonatomic, strong) Tweet *tweet;
+@property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UILabel *content;
+@property (weak, nonatomic) IBOutlet UIImageView *userImage;
+@property (weak, nonatomic) IBOutlet UILabel *timestamp;
 
 + (CGFloat)heightForTweet:(Tweet *)tweet cell:(TweetCell *)prototype;
 - (void)setTweet:(Tweet *)tweet;

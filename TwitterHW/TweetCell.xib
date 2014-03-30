@@ -49,7 +49,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ds3-f6-CpY">
-                        <rect key="frame" x="10" y="10" width="40" height="41"/>
+                        <rect key="frame" x="10" y="15" width="40" height="41"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="6hV-1X-h4A"/>
@@ -58,7 +58,7 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="ds3-f6-CpY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="AuL-cP-rbf"/>
+                    <constraint firstItem="ds3-f6-CpY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="AuL-cP-rbf"/>
                     <constraint firstAttribute="trailing" secondItem="3ge-gI-zLP" secondAttribute="trailing" constant="10" id="C4R-zW-5NV"/>
                     <constraint firstItem="us3-Zf-XiR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="DmT-OH-VCV"/>
                     <constraint firstAttribute="trailing" secondItem="6T3-Iq-eiS" secondAttribute="trailing" constant="10" id="LhQ-7k-Fga"/>
@@ -73,6 +73,9 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="content" destination="3ge-gI-zLP" id="lYa-S6-45m"/>
+                <outlet property="name" destination="us3-Zf-XiR" id="CZY-xI-tNc"/>
+                <outlet property="timestamp" destination="6T3-Iq-eiS" id="VUE-dT-N5V"/>
+                <outlet property="userImage" destination="ds3-f6-CpY" id="bfP-cw-xjF"/>
                 <outlet property="username" destination="LOi-LC-kez" id="ker-i9-WIA"/>
             </connections>
         </tableViewCell>

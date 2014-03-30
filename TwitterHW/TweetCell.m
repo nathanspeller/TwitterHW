@@ -7,6 +7,7 @@
 //
 
 #import "TweetCell.h"
+#import "UIImageView+AFNetworking.h"
 #import "Tweet.h"
 
 @implementation TweetCell
@@ -40,8 +41,12 @@
 
 - (void)setTweet:(Tweet *)tweet{
     _tweet = tweet;
-    self.username.text = self.tweet.username;
+    self.name.text = self.tweet.name;
+    self.username.text = [NSString stringWithFormat:@"@%@", self.tweet.username];
     self.content.text = self.tweet.content;
+    [self.userImage setImageWithURL:self.tweet.userImage];
+    self.userImage.layer.masksToBounds = YES;
+    self.userImage.layer.cornerRadius = 3.0f;
 }
 
 @end
