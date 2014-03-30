@@ -8,6 +8,7 @@
 
 #import "TimelineViewController.h"
 #import "TweetDetailViewController.h"
+#import "ComposeTweetViewController.h"
 #import "TwitterClient.h"
 #import "TweetCell.h"
 #import "Tweet.h"
@@ -34,6 +35,8 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    [self setupNavigationBar];
+    
     self.tweets = [[NSMutableArray alloc] init];
     UINib *tweetCellNib = [UINib nibWithNibName:@"TweetCell" bundle:nil];
     //    self.prototypeCell = [tweetCellNib instantiateWithOwner:self options:nil][0];
@@ -50,6 +53,19 @@
         NSLog(@"fail whale");
     }];
 }
+
+- (void)setupNavigationBar{
+    UIBarButtonItem *composeTweetButton = [[UIBarButtonItem alloc] initWithTitle:@"Compose" style:UIBarButtonItemStylePlain target:self action:@selector(onComposeTweetButton:)];
+    
+    self.navigationItem.rightBarButtonItem = composeTweetButton;
+}
+
+
+- (void)onComposeTweetButton:(id)sender{
+    ComposeTweetViewController *composeVC = [[ComposeTweetViewController alloc] init];
+    [self.navigationController pushViewController:composeVC animated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
