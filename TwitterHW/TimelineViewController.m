@@ -44,8 +44,26 @@
     self.prototype = [tweetCellNib instantiateWithOwner:self options:nil][0];
     [self.tableView registerNib:tweetCellNib forCellReuseIdentifier:@"TweetCell"];
     
+    [self fetchData];
+    
+    // pull-to-refresh
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refreshControl];
+}
+
+- (void)setupNavigationBar{
+    UIBarButtonItem *composeTweetButton = [[UIBarButtonItem alloc] initWithTitle:@"Compose" style:UIBarButtonItemStylePlain target:self action:@selector(onComposeTweetButton:)];
+    self.navigationItem.rightBarButtonItem = composeTweetButton;
+    
+    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(onLogoutButton:)];
+    self.navigationItem.leftBarButtonItem = logoutButton;
+}
+
+- (void)fetchData{
     [[TwitterClient instance] homeTimeLineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"hometimelinesseccess %@", responseObject);
+        [self.tweets removeAllObjects];
         for(NSDictionary *tweetDict in responseObject){
             Tweet *tweet = [[Tweet alloc] initWithDictionary:tweetDict];
             [self.tweets addObject:tweet];
@@ -56,12 +74,9 @@
     }];
 }
 
-- (void)setupNavigationBar{
-    UIBarButtonItem *composeTweetButton = [[UIBarButtonItem alloc] initWithTitle:@"Compose" style:UIBarButtonItemStylePlain target:self action:@selector(onComposeTweetButton:)];
-    self.navigationItem.rightBarButtonItem = composeTweetButton;
-    
-    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(onLogoutButton:)];
-    self.navigationItem.leftBarButtonItem = logoutButton;
+- (void)refresh:(UIRefreshControl *)refreshControl {
+    [self fetchData];
+    [refreshControl endRefreshing];
 }
 
 
