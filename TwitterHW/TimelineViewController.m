@@ -17,6 +17,7 @@
 @interface TimelineViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *tweets;
+@property (nonatomic, strong) TweetCell *prototype;
 @end
 
 @implementation TimelineViewController
@@ -40,7 +41,7 @@
     
     self.tweets = [[NSMutableArray alloc] init];
     UINib *tweetCellNib = [UINib nibWithNibName:@"TweetCell" bundle:nil];
-    //    self.prototypeCell = [tweetCellNib instantiateWithOwner:self options:nil][0];
+    self.prototype = [tweetCellNib instantiateWithOwner:self options:nil][0];
     [self.tableView registerNib:tweetCellNib forCellReuseIdentifier:@"TweetCell"];
     
     [[TwitterClient instance] homeTimeLineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -116,7 +117,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 104.0;
+    return [TweetCell heightForTweet:[self.tweets objectAtIndex:indexPath.row] cell:self.prototype];
 }
 
 @end

@@ -7,8 +7,24 @@
 //
 
 #import "TweetCell.h"
+#import "Tweet.h"
 
 @implementation TweetCell
+
++ (CGFloat)heightForTweet:(Tweet *)tweet cell:(TweetCell *)prototype{
+
+    CGFloat nameWidth = prototype.content.frame.size.width;
+    UIFont *font = prototype.content.font;
+    CGSize constrainedSize = CGSizeMake(nameWidth, 9999);
+    NSDictionary *attributesDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                          font, NSFontAttributeName, nil];
+    
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:tweet.content attributes:attributesDictionary];
+    
+    CGRect requiredHeight = [string boundingRectWithSize:constrainedSize options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+    
+    return 47+requiredHeight.size.height;
+}
 
 - (void)awakeFromNib
 {

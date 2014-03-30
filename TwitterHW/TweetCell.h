@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UILabel *content;
 
++ (CGFloat)heightForTweet:(Tweet *)tweet cell:(TweetCell *)prototype;
 - (void)setTweet:(Tweet *)tweet;
 @end
