@@ -15,7 +15,11 @@
         self.name = dict[@"user"][@"name"];
         self.username = dict[@"user"][@"screen_name"];
         self.content = dict[@"text"];
-        self.timestamp = dict[@"created_at"];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"eee MMM dd HH:mm:ss ZZZZ yyyy"];
+        self.timestamp = [dateFormatter dateFromString:dict[@"created_at"]];
+        
         self.userImage = [NSURL URLWithString:dict[@"user"][@"profile_image_url"]];
         self.favorited = [dict[@"favorited"] intValue];
         self.retweeted = [dict[@"retweeted"] intValue];

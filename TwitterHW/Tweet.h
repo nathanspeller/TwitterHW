@@ -12,7 +12,7 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *content;
-@property (nonatomic, strong) NSString *timestamp;
+@property (nonatomic, strong) NSDate *timestamp;
 @property (nonatomic, strong) NSURL    *userImage;
 @property (nonatomic, strong) NSString *tweetId;
 @property (nonatomic,assign)  NSUInteger favorited;

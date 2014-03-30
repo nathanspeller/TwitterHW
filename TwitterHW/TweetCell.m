@@ -47,6 +47,18 @@
     [self.userImage setImageWithURL:self.tweet.userImage];
     self.userImage.layer.masksToBounds = YES;
     self.userImage.layer.cornerRadius = 3.0f;
+    
+    
+    int secondsAgo = (int) [[NSDate date] timeIntervalSinceDate:self.tweet.timestamp];
+    if (secondsAgo < 60){ //seconds
+        self.timestamp.text = [NSString stringWithFormat:@"%ds", secondsAgo];
+    } else if (secondsAgo < (60*60)){ //minutes
+        self.timestamp.text = [NSString stringWithFormat:@"%dm", secondsAgo/60];
+    } else if(secondsAgo < (60*60*24)) { // hours
+        self.timestamp.text = [NSString stringWithFormat:@"%dh", secondsAgo/(60*60)];
+    } else { // days
+        self.timestamp.text = [NSString stringWithFormat:@"%dd", secondsAgo/(60*60*24)];
+    }
 }
 
 @end
