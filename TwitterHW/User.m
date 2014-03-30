@@ -28,6 +28,13 @@ static User *currentUser = nil;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"UserDidLogin" object:nil];
 }
 
++ (void)logoutUser{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"savedCurrentUserKey"];
+    currentUser = nil;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"UserDidLogout" object:nil];
+    NSLog(@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"savedCurrentUserKey"]);
+}
+
 - (User *)initWithDictionary:(NSDictionary *)dict{
     self = [super self];
     if (self) {

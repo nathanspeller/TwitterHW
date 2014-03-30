@@ -20,6 +20,7 @@ extern NSString *const UserDidLogout;
 
 + (User *)currentUser;
 + (void)setCurrentUser:(User *)user;
++ (void)logoutUser;
 
 - (User *)initWithDictionary:(NSDictionary *)dict;
 

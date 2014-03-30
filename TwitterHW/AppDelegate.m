@@ -57,18 +57,18 @@
     }
     
     User *user = [User currentUser];
-    if (!user) {
+
+    if (user != nil) {
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.timelineVC];
         self.window.rootViewController = navigationController;
     } else {
         self.window.rootViewController = self.loginVC;
     }
-    
-    NSLog(@"USER LOGGED IN IS %@", [User currentUser].name);
 }
 
 - (void)subscribeToUserNotifications{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setRootViewController) name:@"UserDidLogin" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setRootViewController) name:@"UserDidLogout" object:nil];
 }
 
 

@@ -12,6 +12,7 @@
 #import "TwitterClient.h"
 #import "TweetCell.h"
 #import "Tweet.h"
+#import "User.h"
 
 @interface TimelineViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -56,14 +57,20 @@
 
 - (void)setupNavigationBar{
     UIBarButtonItem *composeTweetButton = [[UIBarButtonItem alloc] initWithTitle:@"Compose" style:UIBarButtonItemStylePlain target:self action:@selector(onComposeTweetButton:)];
-    
     self.navigationItem.rightBarButtonItem = composeTweetButton;
+    
+    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(onLogoutButton:)];
+    self.navigationItem.leftBarButtonItem = logoutButton;
 }
 
 
 - (void)onComposeTweetButton:(id)sender{
     ComposeTweetViewController *composeVC = [[ComposeTweetViewController alloc] init];
     [self.navigationController pushViewController:composeVC animated:YES];
+}
+
+- (void)onLogoutButton:(id)sender{
+    [User logoutUser];
 }
 
 
