@@ -10,6 +10,9 @@
 #import "Tweet.h"
 
 @interface TweetCell : UITableViewCell
+@property (nonatomic, strong) Tweet *tweet;
+@property (weak, nonatomic) IBOutlet UILabel *username;
+@property (weak, nonatomic) IBOutlet UILabel *content;
 
 - (void)setTweet:(Tweet *)tweet;
 @end

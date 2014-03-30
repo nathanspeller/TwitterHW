@@ -23,7 +23,9 @@
 }
 
 - (void)setTweet:(Tweet *)tweet{
-    
+    _tweet = tweet;
+    self.username.text = self.tweet.username;
+    self.content.text = self.tweet.content;
 }
 
 @end

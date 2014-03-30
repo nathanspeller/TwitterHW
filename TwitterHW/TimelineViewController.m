@@ -7,6 +7,7 @@
 //
 
 #import "TimelineViewController.h"
+#import "TweetDetailViewController.h"
 #import "TwitterClient.h"
 #import "TweetCell.h"
 #import "Tweet.h"
@@ -30,6 +31,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    self.tweets = [[NSMutableArray alloc] init];
     UINib *tweetCellNib = [UINib nibWithNibName:@"TweetCell" bundle:nil];
     //    self.prototypeCell = [tweetCellNib instantiateWithOwner:self options:nil][0];
     [self.tableView registerNib:tweetCellNib forCellReuseIdentifier:@"TweetCell"];
@@ -37,10 +42,12 @@
     [[TwitterClient instance] homeTimeLineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"hometimelinesseccess %@", responseObject);
         for(NSDictionary *tweetDict in responseObject){
-            Tweet *tweet = [Tweet initWithDictionary:tweetDict];
+            Tweet *tweet = [[Tweet alloc] initWithDictionary:tweetDict];
             [self.tweets addObject:tweet];
-            NSLog(@"TWEET DICT %@", tweetDict);
+            NSLog(@"TWEET DICT %@", tweet.username);
+            NSLog(@"%lu", (unsigned long)[self.tweets count]);
         }
+        [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"fail whale");
     }];
@@ -82,9 +89,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    TweetDetailsViewController *vc = [[TweetDetailsViewController alloc] init];
-//    vc.tweet = [self.tweets objectAtIndex:indexPath.row];
-//    [self.navigationController pushViewController:vc animated:YES];
+    TweetDetailViewController *vc = [[TweetDetailViewController alloc] init];
+    vc.tweet = [self.tweets objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

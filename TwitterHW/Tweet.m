@@ -9,10 +9,9 @@
 #import "Tweet.h"
 
 @implementation Tweet
-+ (Tweet *)initWithDictionary:(NSDictionary *)dict{
-    Tweet *tweet = [[Tweet alloc] init];
-    tweet.username = @"Phil";
-    tweet.content = @"Tweeting in the Twittersphere";
-    return tweet;
+- (Tweet *)initWithDictionary:(NSDictionary *)dict{
+    self.username = dict[@"user"][@"name"];
+    self.content = dict[@"text"];
+    return self;
 }
 @end

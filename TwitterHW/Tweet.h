@@ -12,5 +12,5 @@
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *content;
 
-+ (Tweet *)initWithDictionary:(NSDictionary *)dict;
+- (Tweet *)initWithDictionary:(NSDictionary *)dict;
 @end
