@@ -44,8 +44,6 @@
         for(NSDictionary *tweetDict in responseObject){
             Tweet *tweet = [[Tweet alloc] initWithDictionary:tweetDict];
             [self.tweets addObject:tweet];
-            NSLog(@"TWEET DICT %@", tweet.username);
-            NSLog(@"%lu", (unsigned long)[self.tweets count]);
         }
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

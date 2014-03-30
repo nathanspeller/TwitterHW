@@ -42,6 +42,7 @@
     [self setRootViewController];
     [self subscribeToUserNotifications];
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
@@ -55,7 +56,8 @@
         self.timelineVC = [[TimelineViewController alloc] init];
     }
     
-    if ([User currentUser]) {
+    User *user = [User currentUser];
+    if (!user) {
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.timelineVC];
         self.window.rootViewController = navigationController;
     } else {

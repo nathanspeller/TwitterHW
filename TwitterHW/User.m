@@ -13,13 +13,19 @@
 static User *currentUser = nil;
 
 + (User *)currentUser{
+    if (currentUser == nil){
+        NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"savedCurrentUserKey"];
+        if (dict){
+            currentUser = [[User alloc] initWithDictionary:dict];
+        }
+    }
     return currentUser;
 }
 
 + (void)setCurrentUser:(User *)user{
     currentUser = user;
+    [currentUser saveCurrentUser];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"UserDidLogin" object:nil];
-    NSLog(@"setCurrentUser called");
 }
 
 - (User *)initWithDictionary:(NSDictionary *)dict{
@@ -30,12 +36,22 @@ static User *currentUser = nil;
             self.userId = dict[@"id"];
             self.screenName = dict[@"screen_name"];
             self.profileImageURL = dict[@"profile_image_url"];
-            NSLog(@"initWithDictionary USER");
         } else {
             self = nil;
         }
     }
     return self;
+}
+
+- (void) saveCurrentUser {
+    NSDictionary *saveUser = @{
+                               @"name":              self.name,
+                               @"id":                self.userId,
+                               @"screen_name":       self.screenName,
+                               @"profile_image_url": self.profileImageURL
+                               };
+    
+    [[NSUserDefaults standardUserDefaults] setObject:saveUser forKey:@"savedCurrentUserKey"];
 }
 
 @end
