@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ComposeTweetViewController : UIViewController <UITextViewDelegate>
-
+@property (nonatomic, strong) NSString *pretweetContent;
 @end

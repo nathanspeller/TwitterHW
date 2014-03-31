@@ -51,6 +51,7 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
     
     self.tweetTextView.delegate = self;
+    self.tweetTextView.text = self.pretweetContent;
     [self.tweetTextView becomeFirstResponder];
     
     User *user = [User currentUser];
@@ -64,7 +65,7 @@
 - (void)onTweetButton:(id)sender{
     [[TwitterClient instance] tweetStatus:self.tweetTextView.text success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Success");
-        [self.navigationController popViewControllerAnimated:YES];
+        [self.navigationController popToRootViewControllerAnimated:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Fail");
     }];
@@ -76,23 +77,23 @@
     return YES;
 }
 
--(void)textViewDidBeginEditing:(UITextView *)textView {
-    NSLog(@"DidBeginEditing");
-}
-
-- (BOOL)textViewShouldEndEditing:(UITextView *)textView{
-    NSLog(@"ShouldEndEditing:");
-    return YES;
-}
-
-- (void)textViewDidEndEditing:(UITextView *)textView{
-    NSLog(@"DidEndEditing: %@",textView.text);
-}
-
 - (void)textViewDidChange:(UITextView *)textView{
     NSLog(@"textViewDidChange:");
     [self updateTweetability];
 }
+
+//-(void)textViewDidBeginEditing:(UITextView *)textView {
+//    NSLog(@"DidBeginEditing");
+//}
+//
+//- (BOOL)textViewShouldEndEditing:(UITextView *)textView{
+//    NSLog(@"ShouldEndEditing:");
+//    return YES;
+//}
+//
+//- (void)textViewDidEndEditing:(UITextView *)textView{
+//    NSLog(@"DidEndEditing: %@",textView.text);
+//}
 
 - (void)updateTweetability{
     NSInteger tweetLength = [self.tweetTextView.text length];
@@ -102,7 +103,6 @@
     } else {
         self.navigationItem.title = @"Compose";
     }
-    
 }
 
 

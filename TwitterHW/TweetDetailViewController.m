@@ -11,6 +11,7 @@
 #import "UIImage+Masking.h"
 #import "TwitterClient.h"
 #import "Tweet.h"
+#import "ComposeTweetViewController.h"
 
 @interface TweetDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
@@ -127,7 +128,9 @@
 }
 
 - (void)onReply:(id)sender{
-    NSLog(@"REPLYYY");
+    ComposeTweetViewController *replyVC = [[ComposeTweetViewController alloc] init];
+    replyVC.pretweetContent = [NSString stringWithFormat:@"@%@ ", self.tweet.username];
+    [self.navigationController pushViewController:replyVC animated:YES];
 }
 
 @end

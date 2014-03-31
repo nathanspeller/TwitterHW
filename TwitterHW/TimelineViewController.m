@@ -68,7 +68,6 @@
 
 - (void)fetchData{
     [[TwitterClient instance] homeTimeLineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"hometimelinesseccess %@", responseObject);
         [self.tweets removeAllObjects];
         for(NSDictionary *tweetDict in responseObject){
             Tweet *tweet = [[Tweet alloc] initWithDictionary:tweetDict];
