@@ -132,7 +132,9 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [TweetCell heightForTweet:[self.tweets objectAtIndex:indexPath.row] cell:self.prototype];
+    CGFloat calculatedHeight = [TweetCell heightForTweet:[self.tweets objectAtIndex:indexPath.row] cell:self.prototype];
+    
+    return calculatedHeight > 70.0 ? calculatedHeight : 70.0;
 }
 
 @end
