@@ -19,28 +19,29 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FKr-k0-0tL">
-                    <rect key="frame" x="5" y="60" width="310" height="240"/>
+                    <rect key="frame" x="10" y="57" width="300" height="240"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="240" id="drX-zH-h6D"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.2941176593" green="0.2941176593" blue="0.2941176593" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfM-nv-TUU">
-                    <rect key="frame" x="60" y="14" width="240" height="21"/>
+                    <rect key="frame" x="65" y="14" width="240" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="240" id="3ah-UX-zkz"/>
                         <constraint firstAttribute="height" constant="21" id="Tn7-2Y-5eT"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                     <color key="textColor" red="0.1764705926" green="0.1764705926" blue="0.1764705926" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@handle" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="240" translatesAutoresizingMaskIntoConstraints="NO" id="OMp-op-5oe">
-                    <rect key="frame" x="60" y="36" width="240" height="18"/>
+                    <rect key="frame" x="65" y="36" width="240" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="KtD-Nf-mLk"/>
@@ -51,7 +52,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B2c-oE-03R">
-                    <rect key="frame" x="10" y="15" width="40" height="40"/>
+                    <rect key="frame" x="15" y="15" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="GA1-Ab-obI"/>
@@ -65,11 +66,11 @@
                 <constraint firstItem="qfM-nv-TUU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="14" id="H3S-5Z-ZVN"/>
                 <constraint firstItem="B2c-oE-03R" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="OhT-vb-ogp"/>
                 <constraint firstItem="OMp-op-5oe" firstAttribute="leading" secondItem="B2c-oE-03R" secondAttribute="trailing" constant="10" id="UJv-l3-hgh"/>
-                <constraint firstItem="FKr-k0-0tL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="YBO-qI-0GP"/>
+                <constraint firstItem="FKr-k0-0tL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="YBO-qI-0GP"/>
                 <constraint firstItem="qfM-nv-TUU" firstAttribute="leading" secondItem="B2c-oE-03R" secondAttribute="trailing" constant="10" id="dCL-BE-JDk"/>
-                <constraint firstItem="FKr-k0-0tL" firstAttribute="top" secondItem="B2c-oE-03R" secondAttribute="bottom" constant="5" id="hUh-FI-P8j"/>
-                <constraint firstAttribute="trailing" secondItem="FKr-k0-0tL" secondAttribute="trailing" constant="5" id="kj2-Vd-iFB"/>
-                <constraint firstItem="B2c-oE-03R" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="mzv-zv-DOV"/>
+                <constraint firstItem="FKr-k0-0tL" firstAttribute="top" secondItem="B2c-oE-03R" secondAttribute="bottom" constant="2" id="hUh-FI-P8j"/>
+                <constraint firstAttribute="trailing" secondItem="FKr-k0-0tL" secondAttribute="trailing" constant="10" id="kj2-Vd-iFB"/>
+                <constraint firstItem="B2c-oE-03R" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="mzv-zv-DOV"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

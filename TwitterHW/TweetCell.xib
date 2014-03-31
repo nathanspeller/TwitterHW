@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOi-LC-kez">
-                        <rect key="frame" x="137" y="12" width="41" height="21"/>
+                        <rect key="frame" x="142" y="12" width="41" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="1Rd-Rc-lI3"/>
@@ -34,7 +34,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="us3-Zf-XiR">
-                        <rect key="frame" x="60" y="10" width="72" height="21"/>
+                        <rect key="frame" x="65" y="10" width="72" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="FNF-iL-6Qv"/>
@@ -43,15 +43,15 @@
                         <color key="textColor" red="0.17647059261798859" green="0.17647059261798859" blue="0.17647059261798859" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet Content" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="3ge-gI-zLP">
-                        <rect key="frame" x="60" y="33" width="250" height="18"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet Content" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="245" translatesAutoresizingMaskIntoConstraints="NO" id="3ge-gI-zLP">
+                        <rect key="frame" x="65" y="33" width="245" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                         <color key="textColor" red="0.29411765933036804" green="0.29411765933036804" blue="0.29411765933036804" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ds3-f6-CpY">
-                        <rect key="frame" x="10" y="15" width="40" height="40"/>
+                        <rect key="frame" x="15" y="15" width="40" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="6hV-1X-h4A"/>
@@ -70,7 +70,7 @@
                     <constraint firstItem="3ge-gI-zLP" firstAttribute="top" secondItem="us3-Zf-XiR" secondAttribute="bottom" constant="2" id="bKx-Ub-Af8"/>
                     <constraint firstItem="us3-Zf-XiR" firstAttribute="leading" secondItem="ds3-f6-CpY" secondAttribute="trailing" constant="10" id="bcL-e1-fhf"/>
                     <constraint firstItem="6T3-Iq-eiS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="oLq-iI-xTg"/>
-                    <constraint firstItem="ds3-f6-CpY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="usU-SK-jih"/>
+                    <constraint firstItem="ds3-f6-CpY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="usU-SK-jih"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

@@ -73,12 +73,10 @@
 
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView {
     [self updateTweetability];
-    NSLog(@"ShouldBeginEditing");
     return YES;
 }
 
 - (void)textViewDidChange:(UITextView *)textView{
-    NSLog(@"textViewDidChange:");
     [self updateTweetability];
 }
 
