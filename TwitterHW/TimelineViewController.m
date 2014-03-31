@@ -99,7 +99,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view methods
@@ -117,10 +116,6 @@
 
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
     Tweet *tweet = [self.tweets objectAtIndex:indexPath.row];
-    
-//    UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(13, 7, 60, 90)];
-//    [img setImageWithURL:movie.thumbnailURL];
-//    [cell addSubview:img];
     [cell setTweet:tweet];
     
     return cell;

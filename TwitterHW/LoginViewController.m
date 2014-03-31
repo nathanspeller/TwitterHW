@@ -11,6 +11,7 @@
 
 @interface LoginViewController ()
 - (IBAction)onLoginButton:(id)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *twitterLogo;
 @end
 
 @implementation LoginViewController
@@ -27,6 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.twitterLogo.image = [UIImage imageNamed:@"twitter_bird_white"];
     // Do any additional setup after loading the view from its nib.
 }
 

@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
+                <outlet property="twitterLogo" destination="mch-dD-Amm" id="RV4-NN-tZN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,18 +15,34 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gor-kY-SEH">
-                    <rect key="frame" x="100" y="210" width="121" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gor-kY-SEH">
+                    <rect key="frame" x="87" y="267" width="147" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                     <state key="normal" title="Login with Twitter">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="onLoginButton:" destination="-1" eventType="touchUpInside" id="efc-dx-Poc"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mch-dD-Amm">
+                    <rect key="frame" x="110" y="100" width="100" height="100"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="Fcx-KC-172"/>
+                    </constraints>
+                </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.18039216101169586" green="0.76078438758850098" blue="0.93725496530532837" alpha="1" colorSpace="deviceRGB"/>
+            <constraints>
+                <constraint firstItem="mch-dD-Amm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="4If-fm-9rc"/>
+                <constraint firstAttribute="trailing" secondItem="mch-dD-Amm" secondAttribute="trailing" constant="110" id="79G-Ww-fCb"/>
+                <constraint firstItem="mch-dD-Amm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="110" id="OsH-no-xpu"/>
+                <constraint firstAttribute="centerY" secondItem="Gor-kY-SEH" secondAttribute="centerY" id="R9k-A8-rrc"/>
+                <constraint firstAttribute="centerX" secondItem="Gor-kY-SEH" secondAttribute="centerX" id="Tmg-Ve-Y2m"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
