@@ -133,6 +133,7 @@
 - (void)onReply:(id)sender{
     ComposeTweetViewController *replyVC = [[ComposeTweetViewController alloc] init];
     replyVC.pretweetContent = [NSString stringWithFormat:@"@%@ ", self.tweet.username];
+    replyVC.inReplyToStatusId = self.tweet.tweetId;
     [self.navigationController pushViewController:replyVC animated:YES];
 }
 

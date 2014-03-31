@@ -10,4 +10,5 @@
 
 @interface ComposeTweetViewController : UIViewController <UITextViewDelegate>
 @property (nonatomic, strong) NSString *pretweetContent;
+@property (nonatomic, strong) NSString *inReplyToStatusId;
 @end

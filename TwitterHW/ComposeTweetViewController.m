@@ -63,7 +63,7 @@
 }
 
 - (void)onTweetButton:(id)sender{
-    [[TwitterClient instance] tweetStatus:self.tweetTextView.text success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[TwitterClient instance] tweetStatus:self.tweetTextView.text inReplyToStatusId:self.inReplyToStatusId success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Success");
         [self.navigationController popToRootViewControllerAnimated:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

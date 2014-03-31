@@ -43,9 +43,16 @@
     return [self GET:@"1.1/statuses/home_timeline.json" parameters:nil success:success failure:failure];
 }
 
-- (AFHTTPRequestOperation *)tweetStatus:(NSString *)tweet success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+- (AFHTTPRequestOperation *)tweetStatus:(NSString *)tweet inReplyToStatusId:(NSString *)inReplyToStatusId success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
                                 failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;{
-    return [self POST:@"1.1/statuses/update.json" parameters:@{@"status":tweet} success:success failure:failure];
+    NSDictionary *parameters;
+    if (inReplyToStatusId){
+        parameters = @{@"status":tweet, @"in_reply_to_status_id":inReplyToStatusId};
+    } else {
+        parameters = @{@"status":tweet};
+    }
+    
+    return [self POST:@"1.1/statuses/update.json" parameters:parameters success:success failure:failure];
 }
 
 - (AFHTTPRequestOperation *) retweetTweet:(NSString *)tweetId success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
