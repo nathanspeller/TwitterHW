@@ -8,6 +8,7 @@
 
 #import "TweetDetailViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "UIImage+Masking.h"
 
 @interface TweetDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
@@ -15,11 +16,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UILabel *content;
 @property (weak, nonatomic) IBOutlet UILabel *timestamp;
-@property (weak, nonatomic) IBOutlet UIImageView *favorite;
-@property (weak, nonatomic) IBOutlet UIImageView *retweet;
-@property (weak, nonatomic) IBOutlet UIImageView *reply;
 @property (weak, nonatomic) IBOutlet UILabel *retweetCount;
 @property (weak, nonatomic) IBOutlet UILabel *favoriteCount;
+
+@property (weak, nonatomic) IBOutlet UIButton *retweetButton;
+@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
+@property (weak, nonatomic) IBOutlet UIButton *replyButton;
+
 @end
 
 @implementation TweetDetailViewController
@@ -36,17 +39,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setupStyles];
+    [self setupView];
+    [self updateButtons];
     [self refresh];
 }
 
-- (void)setupStyles{
+- (void)setupView{
     // Move content from under the navigation bar
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.favorite.image = [UIImage imageNamed:@"star"];
-    self.retweet.image  = [UIImage imageNamed:@"repeat"];
-    self.reply.image    = [UIImage imageNamed:@"reply"];
+    
+    // buttons
+    [self.retweetButton addTarget:self action:@selector(onRetweet:) forControlEvents:UIControlEventTouchUpInside];
+    [self.favoriteButton addTarget:self action:@selector(onFavorite:) forControlEvents:UIControlEventTouchUpInside];
+    [self.replyButton addTarget:self action:@selector(onReply:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)updateButtons{
+    UIImage *retweetImage  = [[UIImage imageNamed:@"repeat"]
+                              maskWithColor:[UIColor darkGrayColor]];
+    UIImage *favoriteImage = [[UIImage imageNamed:@"star"]
+                              maskWithColor:[UIColor darkGrayColor]];
+    UIImage *replyImage    = [[UIImage imageNamed:@"reply"]
+                              maskWithColor:[UIColor darkGrayColor]];
+    
+    [self.retweetButton  setBackgroundImage:retweetImage  forState:UIControlStateNormal];
+    [self.favoriteButton setBackgroundImage:favoriteImage forState:UIControlStateNormal];
+    [self.replyButton    setBackgroundImage:replyImage    forState:UIControlStateNormal];
 }
 
 - (void)refresh{
@@ -69,6 +88,18 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)onRetweet:(id)sender{
+    NSLog(@"RETWEET TWEET");
+}
+
+- (void)onFavorite:(id)sender{
+    NSLog(@"FAVORITTEE");
+}
+
+- (void)onReply:(id)sender{
+    NSLog(@"REPLYYY");
 }
 
 @end
