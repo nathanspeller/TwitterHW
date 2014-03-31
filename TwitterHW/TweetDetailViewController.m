@@ -9,6 +9,8 @@
 #import "TweetDetailViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIImage+Masking.h"
+#import "TwitterClient.h"
+#import "Tweet.h"
 
 @interface TweetDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
@@ -40,7 +42,6 @@
 {
     [super viewDidLoad];
     [self setupView];
-    [self updateButtons];
     [self refresh];
 }
 
@@ -56,12 +57,14 @@
 }
 
 - (void)updateButtons{
+    UIColor *retweetColor = self.tweet.retweeted ? [UIColor colorWithRed:0.431 green:0.604 blue:0.180 alpha:1.000] : [UIColor lightGrayColor];
+    UIColor *favoriteColor = self.tweet.favorited ? [UIColor colorWithRed:1.000 green:0.608 blue:0.000 alpha:1.000] : [UIColor lightGrayColor];
     UIImage *retweetImage  = [[UIImage imageNamed:@"repeat"]
-                              maskWithColor:[UIColor darkGrayColor]];
+                              maskWithColor:retweetColor];
     UIImage *favoriteImage = [[UIImage imageNamed:@"star"]
-                              maskWithColor:[UIColor darkGrayColor]];
+                              maskWithColor:favoriteColor];
     UIImage *replyImage    = [[UIImage imageNamed:@"reply"]
-                              maskWithColor:[UIColor darkGrayColor]];
+                              maskWithColor:[UIColor lightGrayColor]];
     
     [self.retweetButton  setBackgroundImage:retweetImage  forState:UIControlStateNormal];
     [self.favoriteButton setBackgroundImage:favoriteImage forState:UIControlStateNormal];
@@ -82,6 +85,7 @@
     self.timestamp.text = [NSDateFormatter localizedStringFromDate:self.tweet.timestamp
                                    dateStyle:NSDateFormatterShortStyle
                                    timeStyle:NSDateFormatterShortStyle];
+    [self updateButtons];
 }
 
 - (void)didReceiveMemoryWarning
@@ -91,11 +95,35 @@
 }
 
 - (void)onRetweet:(id)sender{
-    NSLog(@"RETWEET TWEET");
+    if (!self.tweet.retweeted) {
+        [[TwitterClient instance] retweetTweet:self.tweet.tweetId success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            Tweet *responseTweet = [[Tweet alloc] initWithDictionary:responseObject];
+            self.tweet = responseTweet;
+            [self refresh];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Failed to retweet with ID %@", self.tweet.tweetId);
+        }];
+    }
 }
 
 - (void)onFavorite:(id)sender{
-    NSLog(@"FAVORITTEE");
+    if (self.tweet.favorited) {
+        [[TwitterClient instance] unfavoriteTweet:self.tweet.tweetId success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            Tweet *responseTweet = [[Tweet alloc] initWithDictionary:responseObject];
+            self.tweet = responseTweet;
+            [self refresh];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Failed to unfavorite tweet with ID %@", self.tweet.tweetId);
+        }];
+    } else {
+        [[TwitterClient instance] favoriteTweet:self.tweet.tweetId success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            Tweet *responseTweet = [[Tweet alloc] initWithDictionary:responseObject];
+            self.tweet = responseTweet;
+            [self refresh];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Failed to favorite tweet with ID %@", self.tweet.tweetId);
+        }];
+    }
 }
 
 - (void)onReply:(id)sender{

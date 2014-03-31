@@ -15,6 +15,7 @@
         self.name = dict[@"user"][@"name"];
         self.username = dict[@"user"][@"screen_name"];
         self.content = dict[@"text"];
+        self.tweetId = dict[@"id"];
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"eee MMM dd HH:mm:ss ZZZZ yyyy"];

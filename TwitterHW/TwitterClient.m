@@ -44,8 +44,23 @@
 }
 
 - (AFHTTPRequestOperation *)tweetStatus:(NSString *)tweet success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                                            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;{
+                                failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;{
     return [self POST:@"1.1/statuses/update.json" parameters:@{@"status":tweet} success:success failure:failure];
+}
+
+- (AFHTTPRequestOperation *) retweetTweet:(NSString *)tweetId success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+    
+    return [self POST:@"1.1/statuses/retweet.json" parameters:@{@"id":tweetId} success:success failure:failure];
+}
+
+- (AFHTTPRequestOperation *) favoriteTweet:(NSString *)tweetId success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+    
+    return [self POST:@"1.1/favorites/create.json" parameters:@{@"id":tweetId} success:success failure:failure];
+}
+
+- (AFHTTPRequestOperation *) unfavoriteTweet:(NSString *)tweetId success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+    
+    return [self POST:@"1.1/favorites/destroy.json" parameters:@{@"id":tweetId} success:success failure:failure];
 }
 
 @end
