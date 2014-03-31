@@ -23,8 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *favoriteCount;
 
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
-@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet UIButton *replyButton;
+@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 
 @end
 
@@ -55,21 +55,9 @@
     [self.retweetButton addTarget:self action:@selector(onRetweet:) forControlEvents:UIControlEventTouchUpInside];
     [self.favoriteButton addTarget:self action:@selector(onFavorite:) forControlEvents:UIControlEventTouchUpInside];
     [self.replyButton addTarget:self action:@selector(onReply:) forControlEvents:UIControlEventTouchUpInside];
-}
-
-- (void)updateButtons{
-    UIColor *retweetColor = self.tweet.retweeted ? [UIColor colorWithRed:0.431 green:0.604 blue:0.180 alpha:1.000] : [UIColor lightGrayColor];
-    UIColor *favoriteColor = self.tweet.favorited ? [UIColor colorWithRed:1.000 green:0.608 blue:0.000 alpha:1.000] : [UIColor lightGrayColor];
-    UIImage *retweetImage  = [[UIImage imageNamed:@"repeat"]
-                              maskWithColor:retweetColor];
-    UIImage *favoriteImage = [[UIImage imageNamed:@"star"]
-                              maskWithColor:favoriteColor];
-    UIImage *replyImage    = [[UIImage imageNamed:@"reply"]
-                              maskWithColor:[UIColor lightGrayColor]];
     
-    [self.retweetButton  setBackgroundImage:retweetImage  forState:UIControlStateNormal];
-    [self.favoriteButton setBackgroundImage:favoriteImage forState:UIControlStateNormal];
-    [self.replyButton    setBackgroundImage:replyImage    forState:UIControlStateNormal];
+    UIBarButtonItem *replyButton = [[UIBarButtonItem alloc] initWithTitle:@"Reply" style:UIBarButtonItemStylePlain target:self action:@selector(onReply:)];
+    self.navigationItem.rightBarButtonItem = replyButton;
 }
 
 - (void)refresh{
@@ -87,6 +75,21 @@
                                    dateStyle:NSDateFormatterShortStyle
                                    timeStyle:NSDateFormatterShortStyle];
     [self updateButtons];
+}
+
+- (void)updateButtons{
+    UIColor *retweetColor = self.tweet.retweeted ? [UIColor colorWithRed:0.431 green:0.604 blue:0.180 alpha:1.000] : [UIColor lightGrayColor];
+    UIColor *favoriteColor = self.tweet.favorited ? [UIColor colorWithRed:1.000 green:0.608 blue:0.000 alpha:1.000] : [UIColor lightGrayColor];
+    UIImage *retweetImage  = [[UIImage imageNamed:@"repeat"]
+                              maskWithColor:retweetColor];
+    UIImage *favoriteImage = [[UIImage imageNamed:@"star"]
+                              maskWithColor:favoriteColor];
+    UIImage *replyImage    = [[UIImage imageNamed:@"reply"]
+                              maskWithColor:[UIColor lightGrayColor]];
+    
+    [self.retweetButton  setImage:retweetImage  forState:UIControlStateNormal];
+    [self.favoriteButton setImage:favoriteImage forState:UIControlStateNormal];
+    [self.replyButton    setImage:replyImage    forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
