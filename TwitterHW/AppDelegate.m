@@ -60,6 +60,7 @@
 
     if (user != nil) {
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.timelineVC];
+        navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.184 green:0.761 blue:0.937 alpha:1.000];
         self.window.rootViewController = navigationController;
     } else {
         self.window.rootViewController = self.loginVC;
