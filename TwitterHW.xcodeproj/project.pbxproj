@@ -36,6 +36,9 @@
 		7E970CDF18E8DCC200517A1F /* composing.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E970CDE18E8DCC200517A1F /* composing.png */; };
 		7E970CE218E8DEC200517A1F /* twitter_bird@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E970CE118E8DEC200517A1F /* twitter_bird@2x.png */; };
 		7E970CE418E8F4CD00517A1F /* twitter_bird_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E970CE318E8F4CD00517A1F /* twitter_bird_white.png */; };
+		7E970CEC18E9199B00517A1F /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E970CEB18E9199B00517A1F /* star.png */; };
+		7E970CEE18E919DF00517A1F /* repeat.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E970CED18E919DF00517A1F /* repeat.png */; };
+		7E970CF018E919EA00517A1F /* reply.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E970CEF18E919EA00517A1F /* reply.png */; };
 		8E776D6C893147AF8E6CCCB7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2133956B9FB4DB595C75A58 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +95,9 @@
 		7E970CDE18E8DCC200517A1F /* composing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = composing.png; sourceTree = "<group>"; };
 		7E970CE118E8DEC200517A1F /* twitter_bird@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter_bird@2x.png"; sourceTree = "<group>"; };
 		7E970CE318E8F4CD00517A1F /* twitter_bird_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_bird_white.png; sourceTree = "<group>"; };
+		7E970CEB18E9199B00517A1F /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		7E970CED18E919DF00517A1F /* repeat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = repeat.png; sourceTree = "<group>"; };
+		7E970CEF18E919EA00517A1F /* reply.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reply.png; sourceTree = "<group>"; };
 		C2133956B9FB4DB595C75A58 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -217,6 +223,9 @@
 		7E970CE018E8DDCB00517A1F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7E970CEB18E9199B00517A1F /* star.png */,
+				7E970CED18E919DF00517A1F /* repeat.png */,
+				7E970CEF18E919EA00517A1F /* reply.png */,
 				7E970CE318E8F4CD00517A1F /* twitter_bird_white.png */,
 				7E970CE118E8DEC200517A1F /* twitter_bird@2x.png */,
 				7E970CDE18E8DCC200517A1F /* composing.png */,
@@ -302,6 +311,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E970CEE18E919DF00517A1F /* repeat.png in Resources */,
 				7E970C8018E4B44000517A1F /* InfoPlist.strings in Resources */,
 				7E970CD218E773BA00517A1F /* TweetDetailViewController.xib in Resources */,
 				7E970CE218E8DEC200517A1F /* twitter_bird@2x.png in Resources */,
@@ -313,6 +323,8 @@
 				7E970C8818E4B44000517A1F /* Images.xcassets in Resources */,
 				7E970CA818E4B4E500517A1F /* LoginViewController.xib in Resources */,
 				7E970CDD18E8DC7A00517A1F /* composing@2x.png in Resources */,
+				7E970CF018E919EA00517A1F /* reply.png in Resources */,
+				7E970CEC18E9199B00517A1F /* star.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

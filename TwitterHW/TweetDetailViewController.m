@@ -15,6 +15,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UILabel *content;
 @property (weak, nonatomic) IBOutlet UILabel *timestamp;
+@property (weak, nonatomic) IBOutlet UIImageView *favorite;
+@property (weak, nonatomic) IBOutlet UIImageView *retweet;
+@property (weak, nonatomic) IBOutlet UIImageView *reply;
+@property (weak, nonatomic) IBOutlet UILabel *retweetCount;
+@property (weak, nonatomic) IBOutlet UILabel *favoriteCount;
 @end
 
 @implementation TweetDetailViewController
@@ -39,6 +44,9 @@
     // Move content from under the navigation bar
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.favorite.image = [UIImage imageNamed:@"star"];
+    self.retweet.image  = [UIImage imageNamed:@"repeat"];
+    self.reply.image    = [UIImage imageNamed:@"reply"];
 }
 
 - (void)refresh{
@@ -48,6 +56,9 @@
     [self.userImage setImageWithURL:self.tweet.userImage];
     self.userImage.layer.masksToBounds = YES;
     self.userImage.layer.cornerRadius = 3.0f;
+    self.retweetCount.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.tweet.retweetCount];
+    self.favoriteCount.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.tweet.favoriteCount];
+    
     
     self.timestamp.text = [NSDateFormatter localizedStringFromDate:self.tweet.timestamp
                                    dateStyle:NSDateFormatterShortStyle

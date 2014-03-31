@@ -7,12 +7,15 @@
 //
 
 #import "ComposeTweetViewController.h"
+#import "UIImageView+AFNetworking.h"
 #import "TwitterClient.h"
+#import "User.h"
 
 @interface ComposeTweetViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *tweetTextView;
-@property (weak, nonatomic) IBOutlet UILabel *charactersLeft;
-
+@property (weak, nonatomic) IBOutlet UIImageView *userImage;
+@property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UILabel *username;
 @end
 
 @implementation ComposeTweetViewController
@@ -31,6 +34,7 @@
     [super viewDidLoad];
     [self setupNavigationBar];
     [self setupTextView];
+
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -42,8 +46,19 @@
 }
 
 - (void)setupTextView{
+    // Move content from under the navigation bar
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     self.tweetTextView.delegate = self;
     [self.tweetTextView becomeFirstResponder];
+    
+    User *user = [User currentUser];
+    self.name.text = user.name;
+    self.username.text = [NSString stringWithFormat:@"@%@", user.screenName];
+    [self.userImage setImageWithURL: [NSURL URLWithString:user.profileImageURL]];
+    self.userImage.layer.masksToBounds = YES;
+    self.userImage.layer.cornerRadius = 3.0f;
 }
 
 - (void)onTweetButton:(id)sender{
@@ -82,7 +97,11 @@
 - (void)updateTweetability{
     NSInteger tweetLength = [self.tweetTextView.text length];
     self.navigationItem.rightBarButtonItem.enabled = (140 >= tweetLength && tweetLength > 0);
-    self.charactersLeft.text = [NSString stringWithFormat:@"%i characters left", (140 -tweetLength)];
+    if (tweetLength > 0){
+        self.navigationItem.title = [NSString stringWithFormat:@"%i", (140 -tweetLength)];
+    } else {
+        self.navigationItem.title = @"Compose";
+    }
     
 }
 
