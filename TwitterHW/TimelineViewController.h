@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ComposeTweetViewController.h"
 
-@interface TimelineViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface TimelineViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, ComposeTweetViewControllerDelegate>
 
 @end

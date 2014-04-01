@@ -12,6 +12,7 @@
 #import "TwitterClient.h"
 #import "Tweet.h"
 #import "ComposeTweetViewController.h"
+#import "TimelineViewController.h"
 
 @interface TweetDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
@@ -134,6 +135,7 @@
     ComposeTweetViewController *replyVC = [[ComposeTweetViewController alloc] init];
     replyVC.pretweetContent = [NSString stringWithFormat:@"@%@ ", self.tweet.username];
     replyVC.inReplyToStatusId = self.tweet.tweetId;
+    replyVC.delegate = (TimelineViewController *)self.navigationController.viewControllers[0];
     [self.navigationController pushViewController:replyVC animated:YES];
 }
 

@@ -64,7 +64,10 @@
 
 - (void)onTweetButton:(id)sender{
     [[TwitterClient instance] tweetStatus:self.tweetTextView.text inReplyToStatusId:self.inReplyToStatusId success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Success");
+        
+        Tweet *newTweet = [[Tweet alloc] initWithDictionary:responseObject];
+        [self.delegate addTweet:newTweet controller:self];
+        
         [self.navigationController popToRootViewControllerAnimated:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Fail");
@@ -81,23 +84,20 @@
 }
 
 //-(void)textViewDidBeginEditing:(UITextView *)textView {
-//    NSLog(@"DidBeginEditing");
 //}
 //
 //- (BOOL)textViewShouldEndEditing:(UITextView *)textView{
-//    NSLog(@"ShouldEndEditing:");
 //    return YES;
 //}
 //
 //- (void)textViewDidEndEditing:(UITextView *)textView{
-//    NSLog(@"DidEndEditing: %@",textView.text);
 //}
 
 - (void)updateTweetability{
     NSInteger tweetLength = [self.tweetTextView.text length];
     self.navigationItem.rightBarButtonItem.enabled = (140 >= tweetLength && tweetLength > 0);
     if (tweetLength > 0){
-        self.navigationItem.title = [NSString stringWithFormat:@"%i", (140 -tweetLength)];
+        self.navigationItem.title = [NSString stringWithFormat:@"%i", (140-tweetLength)];
     } else {
         self.navigationItem.title = @"Compose";
     }

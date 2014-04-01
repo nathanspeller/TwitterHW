@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Tweet.h"
+
+@class ComposeTweetViewController;
+@protocol ComposeTweetViewControllerDelegate <NSObject>
+- (void)addTweet:(Tweet *)tweet controller:(ComposeTweetViewController *)controller;
+@end
 
 @interface ComposeTweetViewController : UIViewController <UITextViewDelegate>
 @property (nonatomic, strong) NSString *pretweetContent;
 @property (nonatomic, strong) NSString *inReplyToStatusId;
+@property (nonatomic, weak) id <ComposeTweetViewControllerDelegate> delegate;
 @end

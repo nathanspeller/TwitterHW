@@ -26,7 +26,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.tweets = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -39,7 +39,6 @@
     
     [self setupNavigationBar];
     
-    self.tweets = [[NSMutableArray alloc] init];
     UINib *tweetCellNib = [UINib nibWithNibName:@"TweetCell" bundle:nil];
     self.prototype = [tweetCellNib instantiateWithOwner:self options:nil][0];
     [self.tableView registerNib:tweetCellNib forCellReuseIdentifier:@"TweetCell"];
@@ -87,6 +86,7 @@
 
 - (void)onComposeTweetButton:(id)sender{
     ComposeTweetViewController *composeVC = [[ComposeTweetViewController alloc] init];
+    composeVC.delegate = self;
     [self.navigationController pushViewController:composeVC animated:YES];
 }
 
@@ -135,6 +135,11 @@
     CGFloat calculatedHeight = [TweetCell heightForTweet:[self.tweets objectAtIndex:indexPath.row] cell:self.prototype];
     
     return calculatedHeight > 70.0 ? calculatedHeight : 70.0;
+}
+
+- (void)addTweet:(Tweet *)tweet controller:(ComposeTweetViewController *)controller{
+    [self.tweets insertObject:tweet atIndex:0];
+    [self.tableView reloadData];
 }
 
 @end
