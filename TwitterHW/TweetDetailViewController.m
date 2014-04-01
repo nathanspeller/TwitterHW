@@ -102,11 +102,12 @@
 - (void)onRetweet:(id)sender{
     if (!self.tweet.retweeted) {
         [[TwitterClient instance] retweetTweet:self.tweet.tweetId success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            Tweet *responseTweet = [[Tweet alloc] initWithDictionary:responseObject];
+            Tweet *responseTweet = [[Tweet alloc] initWithDictionary:responseObject[@"retweeted_status"]];
+            NSLog(@"%@", responseObject);
             self.tweet = responseTweet;
             [self refresh];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"Failed to retweet with ID %@", self.tweet.tweetId);
+            NSLog(@"Failed to retweet with ID %@ %@", self.tweet.tweetId, error.description);
         }];
     }
 }
