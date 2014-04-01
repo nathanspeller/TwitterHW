@@ -69,7 +69,12 @@
     [[TwitterClient instance] homeTimeLineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.tweets removeAllObjects];
         for(NSDictionary *tweetDict in responseObject){
-            Tweet *tweet = [[Tweet alloc] initWithDictionary:tweetDict];
+            Tweet *tweet;
+            if(tweetDict[@"retweeted_status"]){
+                tweet = [[Tweet alloc] initWithDictionary:tweetDict[@"retweeted_status"]];
+            }else{
+                tweet = [[Tweet alloc] initWithDictionary:tweetDict];
+            }
             [self.tweets addObject:tweet];
         }
         [self.tableView reloadData];
