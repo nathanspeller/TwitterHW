@@ -41,8 +41,8 @@
 
 - (void)setTweet:(Tweet *)tweet{
     _tweet = tweet;
-    self.name.text = self.tweet.name;
     self.username.text = [NSString stringWithFormat:@"@%@", self.tweet.username];
+    self.name.text = self.tweet.name;
     self.content.text = self.tweet.content;
     [self.userImage setImageWithURL:self.tweet.userImage];
     self.userImage.layer.masksToBounds = YES;

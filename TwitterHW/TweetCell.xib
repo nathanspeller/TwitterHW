@@ -13,12 +13,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="77"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOi-LC-kez">
-                        <rect key="frame" x="142" y="12" width="41" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="@name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOi-LC-kez">
+                        <rect key="frame" x="142" y="15" width="143" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="1Rd-Rc-lI3"/>
-                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -33,11 +30,11 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="us3-Zf-XiR">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="us3-Zf-XiR">
                         <rect key="frame" x="65" y="10" width="72" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="FNF-iL-6Qv"/>
+                            <constraint firstAttribute="height" constant="21" id="44e-AX-mkp"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                         <color key="textColor" red="0.17647059261798859" green="0.17647059261798859" blue="0.17647059261798859" alpha="1" colorSpace="calibratedRGB"/>
@@ -60,15 +57,16 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="LOi-LC-kez" firstAttribute="leading" secondItem="us3-Zf-XiR" secondAttribute="trailing" constant="5" id="8uO-7j-jEY"/>
-                    <constraint firstItem="LOi-LC-kez" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="AtM-4w-KSP"/>
+                    <constraint firstItem="LOi-LC-kez" firstAttribute="leading" secondItem="us3-Zf-XiR" secondAttribute="trailing" constant="5" id="8Vt-Zn-YTB"/>
                     <constraint firstItem="ds3-f6-CpY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="AuL-cP-rbf"/>
-                    <constraint firstAttribute="trailing" secondItem="3ge-gI-zLP" secondAttribute="trailing" constant="10" id="C4R-zW-5NV"/>
-                    <constraint firstItem="us3-Zf-XiR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="DmT-OH-VCV"/>
+                    <constraint firstItem="LOi-LC-kez" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="BFF-IK-Q55"/>
+                    <constraint firstItem="us3-Zf-XiR" firstAttribute="leading" secondItem="ds3-f6-CpY" secondAttribute="trailing" constant="10" id="IFG-ZX-NzT"/>
                     <constraint firstAttribute="trailing" secondItem="6T3-Iq-eiS" secondAttribute="trailing" constant="10" id="LhQ-7k-Fga"/>
-                    <constraint firstItem="3ge-gI-zLP" firstAttribute="leading" secondItem="ds3-f6-CpY" secondAttribute="trailing" constant="10" id="Um0-Ef-eyP"/>
-                    <constraint firstItem="3ge-gI-zLP" firstAttribute="top" secondItem="us3-Zf-XiR" secondAttribute="bottom" constant="2" id="bKx-Ub-Af8"/>
-                    <constraint firstItem="us3-Zf-XiR" firstAttribute="leading" secondItem="ds3-f6-CpY" secondAttribute="trailing" constant="10" id="bcL-e1-fhf"/>
+                    <constraint firstItem="3ge-gI-zLP" firstAttribute="leading" secondItem="ds3-f6-CpY" secondAttribute="trailing" constant="10" id="P8p-LZ-FHi"/>
+                    <constraint firstAttribute="trailing" secondItem="3ge-gI-zLP" secondAttribute="trailing" constant="10" id="WG6-Wb-Zys"/>
+                    <constraint firstItem="6T3-Iq-eiS" firstAttribute="leading" secondItem="LOi-LC-kez" secondAttribute="trailing" constant="8" id="ZBE-uf-zAk"/>
+                    <constraint firstItem="us3-Zf-XiR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="gMv-IR-vON"/>
+                    <constraint firstItem="3ge-gI-zLP" firstAttribute="top" secondItem="us3-Zf-XiR" secondAttribute="bottom" constant="2" id="ifA-yy-8Go"/>
                     <constraint firstItem="6T3-Iq-eiS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="oLq-iI-xTg"/>
                     <constraint firstItem="ds3-f6-CpY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="usU-SK-jih"/>
                 </constraints>
