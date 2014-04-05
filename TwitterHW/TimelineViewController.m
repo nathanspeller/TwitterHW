@@ -55,8 +55,11 @@
     UIBarButtonItem *composeTweetButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"composing.png"] style:UIBarButtonItemStylePlain target:self action:@selector(onComposeTweetButton:)];
     self.navigationItem.rightBarButtonItem = composeTweetButton;
     
-    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(onLogoutButton:)];
-    self.navigationItem.leftBarButtonItem = logoutButton;
+//    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(onLogoutButton:)];
+//    self.navigationItem.leftBarButtonItem = logoutButton;
+    
+    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStylePlain target:self action:@selector(onHamburgerButton:)];
+    self.navigationItem.leftBarButtonItem = hamburgerButton;
     
     // twitter logo
     UIImage *twitterImage = [UIImage imageNamed:@"twitter_bird.png"];
@@ -92,6 +95,9 @@
 
 - (void)onLogoutButton:(id)sender{
     [User logoutUser];
+}
+
+- (void)onHamburgerButton:(id)sender{
 }
 
 

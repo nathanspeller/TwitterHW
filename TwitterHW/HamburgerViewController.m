@@ -11,7 +11,7 @@
 
 @interface HamburgerViewController ()
 @property (nonatomic, strong) UINavigationController *navigationController;
-@property (nonatomic, assign) CGPoint viewLocation;
+@property (nonatomic, assign) CGPoint viewOriginOnPan;
 @end
 
 @implementation HamburgerViewController
@@ -45,9 +45,9 @@ static float openMenuPosition = 280; //open menu position
     CGPoint velocity = [panGestureRecognizer velocityInView:self.view];
     
     if (panGestureRecognizer.state == UIGestureRecognizerStateBegan) {
-        self.viewLocation = CGPointMake(point.x - self.contentView.frame.origin.x, point.y - self.contentView.frame.origin.y);
+        self.viewOriginOnPan = CGPointMake(point.x - self.contentView.frame.origin.x, point.y - self.contentView.frame.origin.y);
     } else if (panGestureRecognizer.state == UIGestureRecognizerStateChanged) {
-        float xPos = (point.x - self.viewLocation.x);
+        float xPos = (point.x - self.viewOriginOnPan.x);
         if (xPos < 0) {
             xPos = 0;
         }
@@ -68,7 +68,7 @@ static float openMenuPosition = 280; //open menu position
             }];
         }
         
-        self.viewLocation = point;
+        self.viewOriginOnPan = point;
     }
     
     

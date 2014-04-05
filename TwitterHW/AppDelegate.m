@@ -53,8 +53,7 @@
     if (!self.loginVC){
         self.loginVC = [[LoginViewController alloc] init];
     }
-    if (!self.timelineVC){
-        self.timelineVC = [[TimelineViewController alloc] init];
+    if (!self.hamburgerVC){
         self.hamburgerVC = [[HamburgerViewController alloc] init];
     }
     

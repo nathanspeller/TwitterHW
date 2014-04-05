@@ -15,7 +15,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) LoginViewController *loginVC;
-@property (strong, nonatomic) TimelineViewController *timelineVC;
 @property (strong, nonatomic) HamburgerViewController *hamburgerVC;
 
 @end
