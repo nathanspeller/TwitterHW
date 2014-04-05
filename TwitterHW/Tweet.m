@@ -7,11 +7,13 @@
 //
 
 #import "Tweet.h"
+#import "User.h"
 
 @implementation Tweet
 - (Tweet *)initWithDictionary:(NSDictionary *)dict{
     self = [super init];
     if (self) {
+        self.user = [[User alloc] initWithDictionary:dict[@"user"]];
         self.name = dict[@"user"][@"name"];
         self.username = dict[@"user"][@"screen_name"];
         self.content = dict[@"text"];

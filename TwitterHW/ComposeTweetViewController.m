@@ -66,7 +66,7 @@
     [[TwitterClient instance] tweetStatus:self.tweetTextView.text inReplyToStatusId:self.inReplyToStatusId success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         Tweet *newTweet = [[Tweet alloc] initWithDictionary:responseObject];
-        [self.delegate addTweet:newTweet controller:self];
+        [self.delegate addLocalTweet:newTweet controller:self];
         
         [self.navigationController popToRootViewControllerAnimated:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

@@ -127,19 +127,10 @@
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onProfileTap:)];
     tapGestureRecognizer.numberOfTapsRequired = 1;
+    cell.userImage.tag = indexPath.row;
     [cell.userImage addGestureRecognizer:tapGestureRecognizer];
     
     return cell;
-}
-
-- (void)onProfileTap:(id)sender{
-    ProfileViewController *profileVC = [[ProfileViewController alloc] init];
-    [self.navigationController pushViewController:profileVC animated:YES];
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -152,9 +143,21 @@
     return [TweetCell heightForTweet:[self.tweets objectAtIndex:indexPath.row] cell:self.prototype];
 }
 
-- (void)addTweet:(Tweet *)tweet controller:(ComposeTweetViewController *)controller{
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
+
+- (void)addLocalTweet:(Tweet *)tweet controller:(ComposeTweetViewController *)controller{
     [self.tweets insertObject:tweet atIndex:0];
     [self.tableView reloadData];
+}
+
+- (void)onProfileTap:(UITapGestureRecognizer *)tap{
+    Tweet *tweet = self.tweets[tap.view.tag];
+    ProfileViewController *profileVC = [[ProfileViewController alloc] init];
+    [profileVC setUser:tweet.user];
+    [self.navigationController pushViewController:profileVC animated:YES];
 }
 
 @end

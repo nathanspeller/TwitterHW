@@ -11,7 +11,7 @@
 
 @class ComposeTweetViewController;
 @protocol ComposeTweetViewControllerDelegate <NSObject>
-- (void)addTweet:(Tweet *)tweet controller:(ComposeTweetViewController *)controller;
+- (void)addLocalTweet:(Tweet *)tweet controller:(ComposeTweetViewController *)controller;
 @end
 
 @interface ComposeTweetViewController : UIViewController <UITextViewDelegate>
