@@ -100,7 +100,6 @@
 
 - (void)onHamburgerButton:(id)sender{
     [[NSNotificationCenter defaultCenter] postNotificationName:@"toggleMenu" object:nil];
-    NSLog(@"TOGGLE MENU NOTIFICATION");
 }
 
 
