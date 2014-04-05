@@ -40,6 +40,8 @@
 		7E970CEE18E919DF00517A1F /* repeat.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E970CED18E919DF00517A1F /* repeat.png */; };
 		7E970CF018E919EA00517A1F /* reply.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E970CEF18E919EA00517A1F /* reply.png */; };
 		7E970CF318E9447800517A1F /* UIImage+Masking.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E970CF218E9447800517A1F /* UIImage+Masking.m */; };
+		7E970CF918EF5BCD00517A1F /* HamburgerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E970CF718EF5BCD00517A1F /* HamburgerViewController.m */; };
+		7E970CFA18EF5BCD00517A1F /* HamburgerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E970CF818EF5BCD00517A1F /* HamburgerViewController.xib */; };
 		8E776D6C893147AF8E6CCCB7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2133956B9FB4DB595C75A58 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +103,9 @@
 		7E970CEF18E919EA00517A1F /* reply.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reply.png; sourceTree = "<group>"; };
 		7E970CF118E9447800517A1F /* UIImage+Masking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Masking.h"; sourceTree = "<group>"; };
 		7E970CF218E9447800517A1F /* UIImage+Masking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Masking.m"; sourceTree = "<group>"; };
+		7E970CF618EF5BCD00517A1F /* HamburgerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HamburgerViewController.h; sourceTree = "<group>"; };
+		7E970CF718EF5BCD00517A1F /* HamburgerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HamburgerViewController.m; sourceTree = "<group>"; };
+		7E970CF818EF5BCD00517A1F /* HamburgerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HamburgerViewController.xib; sourceTree = "<group>"; };
 		C2133956B9FB4DB595C75A58 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -192,6 +197,9 @@
 				7E970CD518E7E26900517A1F /* ComposeTweetViewController.xib */,
 				7E970CF118E9447800517A1F /* UIImage+Masking.h */,
 				7E970CF218E9447800517A1F /* UIImage+Masking.m */,
+				7E970CF618EF5BCD00517A1F /* HamburgerViewController.h */,
+				7E970CF718EF5BCD00517A1F /* HamburgerViewController.m */,
+				7E970CF818EF5BCD00517A1F /* HamburgerViewController.xib */,
 			);
 			path = TwitterHW;
 			sourceTree = "<group>";
@@ -329,6 +337,7 @@
 				7E970CA818E4B4E500517A1F /* LoginViewController.xib in Resources */,
 				7E970CDD18E8DC7A00517A1F /* composing@2x.png in Resources */,
 				7E970CF018E919EA00517A1F /* reply.png in Resources */,
+				7E970CFA18EF5BCD00517A1F /* HamburgerViewController.xib in Resources */,
 				7E970CEC18E9199B00517A1F /* star.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,6 +398,7 @@
 				7E970CCA18E690F900517A1F /* Tweet.m in Sources */,
 				7E970CF318E9447800517A1F /* UIImage+Masking.m in Sources */,
 				7E970CD118E773BA00517A1F /* TweetDetailViewController.m in Sources */,
+				7E970CF918EF5BCD00517A1F /* HamburgerViewController.m in Sources */,
 				7E970CC618E6903B00517A1F /* TweetCell.m in Sources */,
 				7E970CA718E4B4E500517A1F /* LoginViewController.m in Sources */,
 				7E970CC118E68FE100517A1F /* TimelineViewController.m in Sources */,

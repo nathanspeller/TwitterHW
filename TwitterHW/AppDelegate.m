@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "TwitterClient.h"
 #import "User.h"
+#import "HamburgerViewController.h"
 
 @implementation NSURL (dictionaryFromQueryString)
 
@@ -54,14 +55,13 @@
     }
     if (!self.timelineVC){
         self.timelineVC = [[TimelineViewController alloc] init];
+        self.hamburgerVC = [[HamburgerViewController alloc] init];
     }
     
     User *user = [User currentUser];
 
     if (user != nil) {
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.timelineVC];
-        navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.184 green:0.761 blue:0.937 alpha:1.000];
-        self.window.rootViewController = navigationController;
+        self.window.rootViewController = self.hamburgerVC;
     } else {
         self.window.rootViewController = self.loginVC;
     }
