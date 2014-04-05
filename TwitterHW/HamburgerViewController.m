@@ -16,6 +16,8 @@
 
 @implementation HamburgerViewController
 
+static float openMenuPosition = 280; //open menu position
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -49,11 +51,23 @@
         if (xPos < 0) {
             xPos = 0;
         }
-        if (xPos > 280) {
-            xPos = 280;
+        if (xPos > openMenuPosition) {
+            xPos = openMenuPosition;
         }
-        self.contentView.frame = CGRectMake( xPos, 0, self.contentView.frame.size.width, self.contentView.frame.size.height );
+        self.contentView.frame = CGRectMake( xPos, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
     } else if (panGestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        if (velocity.x > 0) {
+            float animationTime = 0.4*(openMenuPosition - self.contentView.frame.origin.x)/openMenuPosition;
+            [UIView animateWithDuration:animationTime animations:^{
+                self.contentView.frame = CGRectMake( openMenuPosition, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
+            }];
+        } else {
+            float animationTime = 0.4*(self.contentView.frame.origin.x)/openMenuPosition;
+            [UIView animateWithDuration:animationTime animations:^{
+                self.contentView.frame = CGRectMake( 0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
+            }];
+        }
+        
         self.viewLocation = point;
     }
     
