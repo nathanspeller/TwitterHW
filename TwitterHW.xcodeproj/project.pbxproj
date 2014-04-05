@@ -192,10 +192,7 @@
 				7E970CC318E6903B00517A1F /* TweetCell.h */,
 				7E970CC418E6903B00517A1F /* TweetCell.m */,
 				7E970CC518E6903B00517A1F /* TweetCell.xib */,
-				7E970CC818E690F900517A1F /* Tweet.h */,
-				7E970CC918E690F900517A1F /* Tweet.m */,
-				7E970CCB18E6B97300517A1F /* User.h */,
-				7E970CCC18E6B97300517A1F /* User.m */,
+				7E970D0A18F0B59000517A1F /* Models */,
 				7E970CCE18E773BA00517A1F /* TweetDetailViewController.h */,
 				7E970CCF18E773BA00517A1F /* TweetDetailViewController.m */,
 				7E970CD018E773BA00517A1F /* TweetDetailViewController.xib */,
@@ -256,6 +253,17 @@
 				7E970CDC18E8DC7A00517A1F /* composing@2x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		7E970D0A18F0B59000517A1F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7E970CC818E690F900517A1F /* Tweet.h */,
+				7E970CC918E690F900517A1F /* Tweet.m */,
+				7E970CCB18E6B97300517A1F /* User.h */,
+				7E970CCC18E6B97300517A1F /* User.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

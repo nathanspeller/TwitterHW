@@ -8,6 +8,7 @@
 
 #import "TwitterClient.h"
 #import "BDBOAuth1RequestOperationManager.h"
+#import "User.h"
 
 @implementation TwitterClient
 
@@ -41,6 +42,11 @@
 - (AFHTTPRequestOperation *)homeTimeLineWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
                                             failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;{
     return [self GET:@"1.1/statuses/home_timeline.json" parameters:nil success:success failure:failure];
+}
+
+- (AFHTTPRequestOperation *)userTimeLine:(User *)user success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                                            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;{
+    return [self GET:@"1.1/statuses/user_timeline.json" parameters:@{@"screen_name":user.screenName} success:success failure:failure];
 }
 
 - (AFHTTPRequestOperation *)tweetStatus:(NSString *)tweet inReplyToStatusId:(NSString *)inReplyToStatusId success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
