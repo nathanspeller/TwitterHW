@@ -8,6 +8,7 @@
 
 #import "HamburgerViewController.h"
 #import "TimelineViewController.h"
+#import "ProfileViewController.h"
 
 @interface HamburgerViewController ()
 @property (nonatomic, strong) UINavigationController *navigationController;
@@ -24,8 +25,13 @@ static float openMenuPosition = 265; //open menu x position
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         TimelineViewController *timelineVC = [[TimelineViewController alloc] init];
+        ProfileViewController  *profileVC = [[ProfileViewController alloc] init];
+        
         self.navigationController = [[UINavigationController alloc] initWithRootViewController:timelineVC];
         self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.184 green:0.761 blue:0.937 alpha:1.000];
+        
+        //temp for profile
+        
     }
     return self;
 }

@@ -13,7 +13,7 @@
 #import "TweetCell.h"
 #import "Tweet.h"
 #import "User.h"
-#import <QuartzCore/QuartzCore.h>
+#import "ProfileViewController.h"
 
 @interface TimelineViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -125,7 +125,16 @@
     Tweet *tweet = [self.tweets objectAtIndex:indexPath.row];
     [cell setTweet:tweet];
     
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onProfileTap:)];
+    tapGestureRecognizer.numberOfTapsRequired = 1;
+    [cell.userImage addGestureRecognizer:tapGestureRecognizer];
+    
     return cell;
+}
+
+- (void)onProfileTap:(id)sender{
+    ProfileViewController *profileVC = [[ProfileViewController alloc] init];
+    [self.navigationController pushViewController:profileVC animated:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -140,9 +149,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat calculatedHeight = [TweetCell heightForTweet:[self.tweets objectAtIndex:indexPath.row] cell:self.prototype];
-    
-    return calculatedHeight > 70.0 ? calculatedHeight : 70.0;
+    return [TweetCell heightForTweet:[self.tweets objectAtIndex:indexPath.row] cell:self.prototype];
 }
 
 - (void)addTweet:(Tweet *)tweet controller:(ComposeTweetViewController *)controller{

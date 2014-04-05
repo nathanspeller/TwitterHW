@@ -24,19 +24,9 @@
     
     CGRect requiredHeight = [string boundingRectWithSize:constrainedSize options:NSStringDrawingUsesLineFragmentOrigin context:nil];
     
-    return 47+requiredHeight.size.height;
-}
-
-- (void)awakeFromNib
-{
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    CGFloat height = 47+requiredHeight.size.height;
+    CGFloat minHeight = 70;
+    return height > minHeight ? height : minHeight;
 }
 
 - (void)setTweet:(Tweet *)tweet{
@@ -46,8 +36,7 @@
     self.content.text = self.tweet.content;
     [self.userImage setImageWithURL:self.tweet.userImage];
     self.userImage.layer.masksToBounds = YES;
-    self.userImage.layer.cornerRadius = 3.0f;
-    
+    self.userImage.layer.cornerRadius = 3.0f;    
     
     int secondsAgo = (int) [[NSDate date] timeIntervalSinceDate:self.tweet.timestamp];
     if (secondsAgo < 60){ //seconds
