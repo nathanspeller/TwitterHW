@@ -50,15 +50,10 @@ static float openMenuPosition = 265; //open menu x position
 }
 
 - (void)toggleMenu{
-    if (self.contentView.frame.origin.x != 0) {
-        [UIView animateWithDuration:0.4 animations:^{
-            self.contentView.frame = CGRectMake( 0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
-        }];
-    } else {
-        [UIView animateWithDuration:0.4 animations:^{
-            self.contentView.frame = CGRectMake( openMenuPosition, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
-        }];
-    }
+    float xPos = (self.contentView.frame.origin.x == 0) ? openMenuPosition : 0;
+    [UIView animateWithDuration:0.4 animations:^{
+        self.contentView.frame = CGRectMake( xPos, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
+    }];
     [self updateMenuOptions];
 }
 
@@ -78,27 +73,19 @@ static float openMenuPosition = 265; //open menu x position
         }
         self.contentView.frame = CGRectMake( xPos, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
     } else if (panGestureRecognizer.state == UIGestureRecognizerStateEnded) {
-        if (velocity.x > 0) {
-            [UIView animateWithDuration:0.25 animations:^{
-                self.contentView.frame = CGRectMake( openMenuPosition, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
-            }];
-        } else {
-            [UIView animateWithDuration:0.25 animations:^{
-                self.contentView.frame = CGRectMake( 0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
-            }];
-        }
+        float destinationXPos = (velocity.x > 0) ? openMenuPosition : 0;
+        [UIView animateWithDuration:0.25 animations:^{
+            self.contentView.frame = CGRectMake( destinationXPos, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
+        }];
         [self updateMenuOptions];
     }
 }
 
 - (void)updateMenuOptions{
-    if (self.contentView.frame.origin.x == 0) {
-        [self.contentView.subviews[0] setUserInteractionEnabled:YES];
-        self.tapGestureRecognizer.enabled = NO;
-    } else {
-        [self.contentView.subviews[0] setUserInteractionEnabled:NO];
-        self.tapGestureRecognizer.enabled = YES;
-    }
+    BOOL isMenuOpen = self.contentView.frame.origin.x == 0;
+    [self.contentView.subviews[0] setUserInteractionEnabled:isMenuOpen];
+    self.tapGestureRecognizer.enabled = !isMenuOpen;
+
 }
 
 - (void)didReceiveMemoryWarning
