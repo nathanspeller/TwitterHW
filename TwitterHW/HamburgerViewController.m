@@ -12,11 +12,12 @@
 @interface HamburgerViewController ()
 @property (nonatomic, strong) UINavigationController *navigationController;
 @property (nonatomic, assign) CGPoint viewOriginOnPan;
+@property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
 @end
 
 @implementation HamburgerViewController
 
-static float openMenuPosition = 280; //open menu position
+static float openMenuPosition = 265; //open menu x position
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,7 +38,35 @@ static float openMenuPosition = 280; //open menu position
     
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onCustomPan:)];
     [self.contentView addGestureRecognizer:panGestureRecognizer];
-    // Do any additional setup after loading the view from its nib.
+
+    // add tap gesture for closing menu
+    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onCustomTap:)];
+    self.tapGestureRecognizer.numberOfTapsRequired = 1;
+    [self.contentView addGestureRecognizer:self.tapGestureRecognizer];
+    self.tapGestureRecognizer.enabled = NO;
+    
+    //register observer for hamburger button
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleMenu) name:@"toggleMenu" object:nil];
+}
+
+- (void)toggleMenu{
+    if (self.contentView.frame.origin.x != 0) {
+        [UIView animateWithDuration:0.4 animations:^{
+            self.contentView.frame = CGRectMake( 0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
+        }];
+        self.tapGestureRecognizer.enabled = NO;
+        NSLog(@"NO");
+    } else {
+        [UIView animateWithDuration:0.4 animations:^{
+            self.contentView.frame = CGRectMake( openMenuPosition, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
+        }];
+        self.tapGestureRecognizer.enabled = YES;
+        NSLog(@"YES");
+    }
+}
+
+- (void)onCustomTap:(UITapGestureRecognizer *)tapGestureRecognizer{
+    [self toggleMenu];
 }
 
 - (void)onCustomPan:(UIPanGestureRecognizer *)panGestureRecognizer{
@@ -57,21 +86,18 @@ static float openMenuPosition = 280; //open menu position
         self.contentView.frame = CGRectMake( xPos, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
     } else if (panGestureRecognizer.state == UIGestureRecognizerStateEnded) {
         if (velocity.x > 0) {
-            float animationTime = 0.4*(openMenuPosition - self.contentView.frame.origin.x)/openMenuPosition;
-            [UIView animateWithDuration:animationTime animations:^{
+            [UIView animateWithDuration:0.25 animations:^{
                 self.contentView.frame = CGRectMake( openMenuPosition, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
             }];
+            self.tapGestureRecognizer.enabled = YES;
         } else {
-            float animationTime = 0.4*(self.contentView.frame.origin.x)/openMenuPosition;
-            [UIView animateWithDuration:animationTime animations:^{
+            [UIView animateWithDuration:0.25 animations:^{
                 self.contentView.frame = CGRectMake( 0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
             }];
+            self.tapGestureRecognizer.enabled = NO;
         }
-        
         self.viewOriginOnPan = point;
     }
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
