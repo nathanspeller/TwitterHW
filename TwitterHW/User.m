@@ -43,6 +43,14 @@ static User *currentUser = nil;
             self.userId = dict[@"id"];
             self.screenName = dict[@"screen_name"];
             self.profileImageURL = dict[@"profile_image_url"];
+            NSString *bannerTemp = dict[@"profile_banner_url"];
+            if ([bannerTemp length] == 0) {
+                self.bannerImageURL = @"https://abs.twimg.com/a/1396545424/img/t1/grey_header_web.jpg";
+            } else if ([bannerTemp rangeOfString:@"pbs.twimg.com"].location == NSNotFound){
+                self.bannerImageURL = bannerTemp;
+            } else {
+                self.bannerImageURL = [NSString stringWithFormat:@"%@/web", bannerTemp];
+            }
         } else {
             self = nil;
         }
@@ -55,7 +63,8 @@ static User *currentUser = nil;
                                @"name":              self.name,
                                @"id":                self.userId,
                                @"screen_name":       self.screenName,
-                               @"profile_image_url": self.profileImageURL
+                               @"profile_image_url": self.profileImageURL,
+                               @"banner_image_url" : self.bannerImageURL
                                };
     
     [[NSUserDefaults standardUserDefaults] setObject:saveUser forKey:@"savedCurrentUserKey"];
