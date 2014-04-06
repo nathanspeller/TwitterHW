@@ -29,9 +29,6 @@ static float openMenuPosition = 265; //open menu x position
         
         self.navigationController = [[UINavigationController alloc] initWithRootViewController:timelineVC];
         self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.184 green:0.761 blue:0.937 alpha:1.000];
-        
-        //temp for profile
-        
     }
     return self;
 }
@@ -50,6 +47,9 @@ static float openMenuPosition = 265; //open menu x position
     self.tapGestureRecognizer.numberOfTapsRequired = 1;
     [self.contentView addGestureRecognizer:self.tapGestureRecognizer];
     [self updateMenuOptions];
+    
+    self.menu.backgroundColor = [UIColor colorWithRed:0.05 green:0.05 blue:0.05 alpha:1.0];
+    self.menu.separatorColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1.0];
     
     //register observer for hamburger button
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleMenu) name:@"toggleMenu" object:nil];

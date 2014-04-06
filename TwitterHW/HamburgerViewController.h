@@ -10,4 +10,5 @@
 
 @interface HamburgerViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UITableView *menu;
 @end
