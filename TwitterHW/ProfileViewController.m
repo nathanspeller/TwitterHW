@@ -18,7 +18,7 @@
 @property (nonatomic, strong) NSMutableArray *tweets;
 @property (nonatomic, strong) TweetCell *prototype;
 @property (weak, nonatomic) IBOutlet UIImageView *bannerImage;
-
+@property (weak, nonatomic) IBOutlet UIView *bannerFilter;
 @end
 
 @implementation ProfileViewController
@@ -67,7 +67,7 @@
 
 - (void)fetchData{
     [[TwitterClient instance] userTimeLine:self.user success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@", responseObject);
+//        NSLog(@"%@", responseObject);
         [self.tweets removeAllObjects];
         for(NSDictionary *tweetDict in responseObject){
             Tweet *tweet = [[Tweet alloc] initWithDictionary:tweetDict];
@@ -95,6 +95,7 @@
     if (indexPath.row == 0){
         cell = (ProfileHeaderCell *)[tableView dequeueReusableCellWithIdentifier:@"ProfileCell"];
         cell.backgroundColor = [UIColor clearColor];
+        [(ProfileHeaderCell *)cell setUser:self.user];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
         Tweet *tweet = [self.tweets objectAtIndex:indexPath.row];
@@ -116,10 +117,14 @@
 {
     if (self.tableView.contentOffset.y > 0) {
         //move it up at proper size
-        self.bannerImage.frame = CGRectMake(0,-self.tableView.contentOffset.y, 320, 160);
+        CGRect newFrame = CGRectMake(0,-self.tableView.contentOffset.y, 320, 160);
+        self.bannerImage.frame = newFrame;
+        self.bannerFilter.frame = newFrame;
     } else {
         //grow
-        self.bannerImage.frame = CGRectMake(0,0, 320, 160-self.tableView.contentOffset.y);
+        CGRect newFrame = CGRectMake(0,0, 320, 160-self.tableView.contentOffset.y);
+        self.bannerImage.frame = newFrame;
+        self.bannerFilter.frame = newFrame;
     }
 }
 

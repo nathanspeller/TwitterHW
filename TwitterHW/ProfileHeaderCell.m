@@ -13,6 +13,13 @@
 
 - (void)setUser:(User *)user{
     _user = user;
+    self.name.text = self.user.name;
+    self.username.text = [NSString stringWithFormat:@"@%@", self.user.screenName];
+    [self.profileImage setImageWithURL:[NSURL URLWithString:self.user.profileImageURL]];
+    self.profileImage.layer.masksToBounds = YES;
+    self.profileImage.layer.cornerRadius = 2.0f;
+    self.profileBorder.layer.masksToBounds = YES;
+    self.profileBorder.layer.cornerRadius = 6.0f;
 }
 
 - (void)awakeFromNib

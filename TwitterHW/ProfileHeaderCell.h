@@ -11,6 +11,10 @@
 
 @interface ProfileHeaderCell : UITableViewCell
 @property (nonatomic, strong) User *user;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
+@property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UILabel *username;
+@property (weak, nonatomic) IBOutlet UIView *profileBorder;
 
 - (void)setUser:(User*)user;
 
