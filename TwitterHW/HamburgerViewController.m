@@ -9,6 +9,7 @@
 #import "HamburgerViewController.h"
 #import "TimelineViewController.h"
 #import "ProfileViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface HamburgerViewController ()
 @property (nonatomic, strong) UINavigationController *navigationController;
@@ -48,8 +49,19 @@ static float openMenuPosition = 265; //open menu x position
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onCustomPan:)];
     [self.contentView addGestureRecognizer:panGestureRecognizer];
     
+    [self styleMenu];
+    
     //register observer for hamburger button
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleMenu) name:@"toggleMenu" object:nil];
+}
+
+- (void)styleMenu{
+    User *currentUser = [User currentUser];
+    self.name.text = currentUser.name;
+    self.username.text = [NSString stringWithFormat:@"@%@", currentUser.screenName];
+    [self.userImage setImageWithURL:[NSURL URLWithString:currentUser.profileImageURL]];
+    self.userImage.layer.masksToBounds = YES;
+    self.userImage.layer.cornerRadius = 3.0f;
 }
 
 - (void)toggleMenu{
