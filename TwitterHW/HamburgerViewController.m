@@ -14,6 +14,11 @@
 @property (nonatomic, strong) UINavigationController *navigationController;
 @property (nonatomic, assign) CGPoint viewOriginOnPan;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
+
+- (IBAction)onProfile:(id)sender;
+- (IBAction)onTimeline:(id)sender;
+- (IBAction)onMentions:(id)sender;
+- (IBAction)onLogout:(id)sender;
 @end
 
 @implementation HamburgerViewController
@@ -29,6 +34,7 @@ static float openMenuPosition = 265; //open menu x position
         
         self.navigationController = [[UINavigationController alloc] initWithRootViewController:timelineVC];
         self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.184 green:0.761 blue:0.937 alpha:1.000];
+        [self.navigationController.navigationBar setTranslucent:NO];
     }
     return self;
 }
@@ -41,21 +47,19 @@ static float openMenuPosition = 265; //open menu x position
     
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onCustomPan:)];
     [self.contentView addGestureRecognizer:panGestureRecognizer];
-
-    // add tap gesture for closing menu
-    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleMenu)];
-    self.tapGestureRecognizer.numberOfTapsRequired = 1;
-    [self.contentView addGestureRecognizer:self.tapGestureRecognizer];
-    [self updateMenuOptions];
-    
-    self.menu.backgroundColor = [UIColor colorWithRed:0.05 green:0.05 blue:0.05 alpha:1.0];
-    self.menu.separatorColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1.0];
     
     //register observer for hamburger button
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleMenu) name:@"toggleMenu" object:nil];
 }
 
 - (void)toggleMenu{
+    // add tap gesture for closing menu
+    if (self.tapGestureRecognizer == nil) {
+        self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleMenu)];
+        self.tapGestureRecognizer.numberOfTapsRequired = 1;
+        [self.contentView addGestureRecognizer:self.tapGestureRecognizer];
+    }
+    
     float xPos = (self.contentView.frame.origin.x == 0) ? openMenuPosition : 0;
     [UIView animateWithDuration:0.4 animations:^{
         self.contentView.frame = CGRectMake( xPos, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
@@ -91,7 +95,6 @@ static float openMenuPosition = 265; //open menu x position
     BOOL isMenuOpen = self.contentView.frame.origin.x == 0;
     [self.contentView.subviews[0] setUserInteractionEnabled:isMenuOpen];
     self.tapGestureRecognizer.enabled = !isMenuOpen;
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -100,4 +103,15 @@ static float openMenuPosition = 265; //open menu x position
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)onProfile:(id)sender {
+}
+
+- (IBAction)onTimeline:(id)sender {
+}
+
+- (IBAction)onMentions:(id)sender {
+}
+
+- (IBAction)onLogout:(id)sender {
+}
 @end

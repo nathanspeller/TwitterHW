@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface HamburgerViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *username;
+@property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UIImageView *userImage;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet UITableView *menu;
 @end
