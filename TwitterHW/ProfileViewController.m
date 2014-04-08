@@ -128,4 +128,9 @@
     }
 }
 
+- (void)setUser:(User *)user{
+    _user = user;
+    [self.tableView reloadData];
+}
+
 @end
