@@ -13,6 +13,7 @@
 #import "Tweet.h"
 #import "ComposeTweetViewController.h"
 #import "ListViewController.h"
+#import "ProfileViewController.h"
 
 @interface TweetDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
@@ -59,6 +60,10 @@
     
     UIBarButtonItem *replyButton = [[UIBarButtonItem alloc] initWithTitle:@"Reply" style:UIBarButtonItemStylePlain target:self action:@selector(onReply:)];
     self.navigationItem.rightBarButtonItem = replyButton;
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onProfileTap:)];
+    tapGestureRecognizer.numberOfTapsRequired = 1;
+    [self.userImage addGestureRecognizer:tapGestureRecognizer];
 }
 
 - (void)refresh{
@@ -138,6 +143,14 @@
     replyVC.inReplyToStatusId = self.tweet.tweetId;
     replyVC.delegate = (ListViewController *)self.navigationController.viewControllers[0];
     [self.navigationController pushViewController:replyVC animated:YES];
+}
+
+
+- (void)onProfileTap:(UITapGestureRecognizer *)tap{
+    Tweet *tweet = self.tweet;
+    ProfileViewController *profileVC = [[ProfileViewController alloc] init];
+    [profileVC setUser:tweet.user];
+    [self.navigationController pushViewController:profileVC animated:YES];
 }
 
 @end
