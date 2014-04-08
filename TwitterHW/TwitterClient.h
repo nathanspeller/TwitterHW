@@ -21,6 +21,9 @@
 - (AFHTTPRequestOperation *)homeTimeLineWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
                                             failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
+- (AFHTTPRequestOperation *)mentionsWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                                            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
 - (AFHTTPRequestOperation *)userTimeLine:(User *)user success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
                                  failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 

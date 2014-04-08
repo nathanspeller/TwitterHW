@@ -70,16 +70,29 @@
 }
 
 - (void)fetchData{
-    [[TwitterClient instance] homeTimeLineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.tweets removeAllObjects];
-        for(NSDictionary *tweetDict in responseObject){
-            Tweet *tweet = [[Tweet alloc] initWithDictionary:tweetDict];
-            [self.tweets addObject:tweet];
-        }
-        [self.tableView reloadData];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"fail whale");
-    }];
+    if (self.feedType == TIMELINE) {
+        [[TwitterClient instance] homeTimeLineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [self.tweets removeAllObjects];
+            for(NSDictionary *tweetDict in responseObject){
+                Tweet *tweet = [[Tweet alloc] initWithDictionary:tweetDict];
+                [self.tweets addObject:tweet];
+            }
+            [self.tableView reloadData];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"fail whale");
+        }];
+    } else if (self.feedType == MENTIONS) {
+        [[TwitterClient instance] mentionsWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [self.tweets removeAllObjects];
+            for(NSDictionary *tweetDict in responseObject){
+                Tweet *tweet = [[Tweet alloc] initWithDictionary:tweetDict];
+                [self.tweets addObject:tweet];
+            }
+            [self.tableView reloadData];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"fail whale");
+        }];
+    }
 }
 
 - (void)refresh:(UIRefreshControl *)refreshControl {

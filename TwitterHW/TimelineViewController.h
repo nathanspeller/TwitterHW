@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "ComposeTweetViewController.h"
 
-@interface TimelineViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, ComposeTweetViewControllerDelegate>
+enum FeedType {
+    TIMELINE,
+    MENTIONS
+};
+typedef enum FeedType FeedType;
 
+@interface TimelineViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, ComposeTweetViewControllerDelegate>
+@property (nonatomic, assign) FeedType feedType;
 @end

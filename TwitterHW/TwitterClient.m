@@ -44,6 +44,11 @@
     return [self GET:@"1.1/statuses/home_timeline.json" parameters:nil success:success failure:failure];
 }
 
+- (AFHTTPRequestOperation *)mentionsWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                                            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;{
+    return [self GET:@"1.1/statuses/mentions_timeline.json" parameters:nil success:success failure:failure];
+}
+
 - (AFHTTPRequestOperation *)userTimeLine:(User *)user success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
                                             failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;{
     return [self GET:@"1.1/statuses/user_timeline.json" parameters:@{@"screen_name":user.screenName} success:success failure:failure];

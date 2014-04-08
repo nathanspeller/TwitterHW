@@ -14,6 +14,7 @@
 @interface HamburgerViewController ()
 @property (nonatomic, strong) UINavigationController *navigationController;
 @property (nonatomic, strong) TimelineViewController *timelineViewController;
+@property (nonatomic, strong) TimelineViewController *mentionsViewController;
 @property (nonatomic, strong) ProfileViewController *profileViewController;
 @property (nonatomic, assign) CGPoint viewOriginOnPan;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
@@ -33,8 +34,12 @@ static float openMenuPosition = 265; //open menu x position
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.timelineViewController = [[TimelineViewController alloc] init];
+        self.timelineViewController.feedType = TIMELINE;
         self.profileViewController  = [[ProfileViewController alloc] init];
         [self.profileViewController setUser:[User currentUser]];
+        
+        self.mentionsViewController = [[TimelineViewController alloc] init];
+        self.mentionsViewController.feedType = MENTIONS;
         
         self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.timelineViewController];
         self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.184 green:0.761 blue:0.937 alpha:1.000];
@@ -125,12 +130,13 @@ static float openMenuPosition = 265; //open menu x position
 }
 
 - (IBAction)onTimeline:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController setViewControllers:@[self.timelineViewController] animated:YES];
     [self toggleMenu];
 }
 
 - (IBAction)onMentions:(id)sender {
-
+    [self.navigationController setViewControllers:@[self.mentionsViewController] animated:YES];
+    [self toggleMenu];
 }
 
 - (IBAction)onLogout:(id)sender {
