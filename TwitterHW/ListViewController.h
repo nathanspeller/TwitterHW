@@ -15,6 +15,6 @@ enum FeedType {
 };
 typedef enum FeedType FeedType;
 
-@interface TimelineViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, ComposeTweetViewControllerDelegate>
+@interface ListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, ComposeTweetViewControllerDelegate>
 @property (nonatomic, assign) FeedType feedType;
 @end

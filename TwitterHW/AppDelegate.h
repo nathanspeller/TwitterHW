@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LoginViewController.h"
-#import "TimelineViewController.h"
+#import "ListViewController.h"
 #import "HamburgerViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

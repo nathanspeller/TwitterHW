@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Nathan Speller. All rights reserved.
 //
 
-#import "TimelineViewController.h"
+#import "ListViewController.h"
 #import "TweetDetailViewController.h"
 #import "ComposeTweetViewController.h"
 #import "TwitterClient.h"
@@ -15,13 +15,13 @@
 #import "User.h"
 #import "ProfileViewController.h"
 
-@interface TimelineViewController ()
+@interface ListViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *tweets;
 @property (nonatomic, strong) TweetCell *prototype;
 @end
 
-@implementation TimelineViewController
+@implementation ListViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

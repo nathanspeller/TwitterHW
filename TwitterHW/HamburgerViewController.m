@@ -7,14 +7,14 @@
 //
 
 #import "HamburgerViewController.h"
-#import "TimelineViewController.h"
+#import "ListViewController.h"
 #import "ProfileViewController.h"
 #import "UIImageView+AFNetworking.h"
 
 @interface HamburgerViewController ()
 @property (nonatomic, strong) UINavigationController *navigationController;
-@property (nonatomic, strong) TimelineViewController *timelineViewController;
-@property (nonatomic, strong) TimelineViewController *mentionsViewController;
+@property (nonatomic, strong) ListViewController *timelineViewController;
+@property (nonatomic, strong) ListViewController *mentionsViewController;
 @property (nonatomic, strong) ProfileViewController *profileViewController;
 @property (nonatomic, assign) CGPoint viewOriginOnPan;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
@@ -33,12 +33,12 @@ static float openMenuPosition = 265; //open menu x position
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.timelineViewController = [[TimelineViewController alloc] init];
+        self.timelineViewController = [[ListViewController alloc] init];
         self.timelineViewController.feedType = TIMELINE;
         self.profileViewController  = [[ProfileViewController alloc] init];
         [self.profileViewController setUser:[User currentUser]];
         
-        self.mentionsViewController = [[TimelineViewController alloc] init];
+        self.mentionsViewController = [[ListViewController alloc] init];
         self.mentionsViewController.feedType = MENTIONS;
         
         self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.timelineViewController];
