@@ -12,6 +12,7 @@
 #import "Tweet.h"
 #import "TwitterClient.h"
 #import "UIImageView+AFNetworking.h"
+#import "TweetDetailViewController.h"
 
 @interface ProfileViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -87,7 +88,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.tweets.count;
+    return self.tweets.count+1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -98,7 +99,7 @@
         [(ProfileHeaderCell *)cell setUser:self.user];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
-        Tweet *tweet = [self.tweets objectAtIndex:indexPath.row];
+        Tweet *tweet = [self.tweets objectAtIndex:indexPath.row-1];
         [(TweetCell *)cell setTweet:tweet];
     }
     
@@ -109,7 +110,7 @@
     if (indexPath.row == 0){
         return 160;
     } else {
-        return [TweetCell heightForTweet:[self.tweets objectAtIndex:indexPath.row] cell:self.prototype];
+        return [TweetCell heightForTweet:[self.tweets objectAtIndex:indexPath.row-1] cell:self.prototype];
     }
 }
 
@@ -126,6 +127,12 @@
         self.bannerImage.frame = newFrame;
         self.bannerFilter.frame = newFrame;
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    TweetDetailViewController *vc = [[TweetDetailViewController alloc] init];
+    vc.tweet = [self.tweets objectAtIndex:indexPath.row-1];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)setUser:(User *)user{
